@@ -1,0 +1,8 @@
+deploy_settings.py
+backend/venv
+venv
+.venv
+frontend/node_modules
+.idea
+backend/core/static/assets
+backend/public_html

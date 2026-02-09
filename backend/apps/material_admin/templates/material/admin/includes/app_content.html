@@ -1,0 +1,57 @@
+{% load i18n %}
+<style>
+
+    .mb-3 {
+        margin-bottom: 20px !important;
+    }
+    h5{
+        padding-left: 10px;
+        font-size: 1.25rem;
+        color: #777;
+    }
+</style>
+<div class="content-wrapper">
+    <div class="app-list">
+        {% if app_list %}
+            <div class="app">
+                <div class=" ">
+                    {% for app in app_list %}
+                        <div class="row  card mb-3">
+                            <div class=" ">
+
+                                <h5>{{ app.name }}</h5>
+                                {% for model in app.models %}
+                                    <div class="app-item col s6 m6 l2">
+                                        <a {% if model.admin_url %}href="{{ model.admin_url }}"
+                                           {% else %}class="disabled"{% endif %}>
+                                            {% if model.count != None %}
+                                                <div class="card app-count-badge">
+                                                    <div class="badge-content">
+                                                        {{ model.count }}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                            <i class="material-icons" aria-hidden="true">
+                                                {{ model.icon|default_if_none:'settings' }}
+                                            </i>
+                                            <h6 class="card-app-name">{{ model.name }}</h6>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="app">
+                <div class="card">
+                    <div class="card-content">
+                        <p>{% trans "You don't have permission to view or edit anything." %}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
