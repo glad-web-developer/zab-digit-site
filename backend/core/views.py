@@ -6,7 +6,7 @@ from apps.project.models import Project
 
 
 def render_home(request):
-    diplomas = Diploma.objects.all()
+    diplomas = Diploma.objects.all().order_by('order_index')
     clients = Client.objects.all()
     projects = Project.objects.filter(show_in_main=True)
     return render(request, 'home.html',
@@ -21,5 +21,5 @@ def render_gratitude(request):
     return render(request, 'gratitude.html',
                   {})
 
-
-
+def error_404(request, exception):
+    return render(request,'404.html', status=404)

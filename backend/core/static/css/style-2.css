@@ -1,0 +1,1154 @@
+/* @font-face {  
+    font-family: 'Strong';  
+    src: url('../fonts/Strong-Regular.ttf') format('truetype');  
+} */
+
+/* Блок "Мы работаем в Чите и в Забайкальском крае" */
+
+.card-work {
+    --bs-card-border-width: 1px;
+    --bs-card-border-color: #F5F5F5;
+    --bs-card-border-radius: 30px;
+    --bs-card-color: #0F0006;
+    --bs-card-bg: #F5F5F5;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) 
+        solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+    @media (max-width: 768px) { 
+        /* width: 351px; */
+        height: 444px;
+        padding: 25px 30px 10px 20px;
+        box-shadow: -2px 3px 0px #0F0006;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        height: 142px;
+        padding: 25px 25px 10px 20px;
+        box-shadow: -2px 3px 0px #0F0006;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        height: 192px;
+        padding: 40px 25px 10px 30px;
+        box-shadow: -3px 4px 0px #0F0006;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        height: 222px;
+        padding: 50px 25px 10px 40px;
+        box-shadow: -4px 5px 0px #0F0006;
+    };
+    @media (min-width: 1400px) { 
+        height: 252px;
+        padding: 50px 25px 80px 25px;
+        box-shadow: -4px 5px 0px #0F0006;
+    };
+}
+
+.card-work-header {
+    line-height: 107%;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    padding-top: 20px;
+    @media (max-width: 768px) { 
+        font-size: 24px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        font-size: 12px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        font-size: 16px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        font-size: 20px;
+    };
+    @media (min-width: 1400px) { 
+        font-size: 24px;
+    };
+}
+
+.card-work-count-text {
+    line-height: 100%;
+    font-family: "Strong", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    color: #CC0047;
+    padding-top: 0px;
+    @media (max-width: 768px) { 
+        font-size: 100px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        font-size: 60px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        font-size: 80px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) {
+        font-size: 90px;
+    };
+    @media (min-width: 1400px) {
+        font-size: 100px;
+    };
+}
+
+.card-work-small-text {
+    line-height: 140%;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    @media (max-width: 768px) { 
+        font-size: 16px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        font-size: 10px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        font-size: 12px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) {
+        font-size: 14px;
+    };
+    @media (min-width: 1400px) {
+        font-size: 16px;
+    };
+}
+
+/* Блок "Вам нужна автоматизация, если" */
+
+.card-horizontal {
+    --bs-card-border-width: 1px;
+    --bs-card-border-color: black;
+    --bs-card-border-radius: 30px;
+    --bs-card-height: 240px;
+    --bs-card-width: 405px;
+    --bs-card-color: #0F0006;
+    --bs-card-bg: #fff;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) 
+        solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+    line-height: 140%;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    @media (max-width: 768px) { 
+        /* width: 351px; */
+        height: 240px;
+        font-size: 16px;
+        padding: 40px 25px 20px 40px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        width: 224px;
+        height: 140px;
+        font-size: 9px;
+        padding: 25px 11px 15px 15px;
+        .card-body img {
+            width: 54%;
+            height: 33%;
+        }
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        width: 300px;
+        height: 190px;
+        font-size: 12px;
+        padding: 35px 50px 15px 25px;
+        .card-body img {
+            width: 54%;
+            height: 30%;
+        }
+    };
+    @media (min-width: 1200px) { 
+        min-width: 351px; 
+        height: 240px;
+        font-size: 16px;
+        padding: 40px 20px 20px 40px;
+    };
+}
+
+.card-vertical {
+    --bs-card-border-width: 1px;
+    --bs-card-border-color: black;
+    --bs-card-border-radius: 30px;
+    --bs-card-height: 240px;
+    --bs-card-width: 405px;
+    --bs-card-color: #F5F5F5 !important;
+    --bs-card-bg: #CC0047;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) 
+        solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+    line-height: 140%;
+    font-style: normal;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    @media (max-width: 768px) { 
+        /* width: 351px; */
+        height: 240px;
+        font-size: 16px;
+        padding: 40px 25px 20px 40px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        width: 224px;
+        height: 140px;
+        font-size: 9px;
+        padding: 25px 11px 15px 15px;
+        .card-body img {
+            width: 54%;
+            height: 33%;
+        }
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        width: 300px;
+        height: 190px;
+        font-size: 12px;
+        padding: 35px 50px 15px 25px;
+        .card-body img {
+            width: 54%;
+            height: 30%;
+        }
+    };
+    @media (min-width: 1200px) { 
+        min-width: 351px; 
+        height: 240px;
+        font-size: 16px;
+        padding: 40px 20px 20px 40px;
+    };
+}
+
+.card-vertical .card-text {
+    color: #F5F5F5 !important;
+    margin-bottom: 15px;
+    @media (max-width: 768px) { 
+        font-size: 16px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        font-size: 9px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        font-size: 12px;
+    };
+    @media (min-width: 1200px) { 
+        font-size: 16px;
+    };
+}
+
+.card-horizontal .card-text {
+    color: #0F0006 !important;
+    margin-bottom: 15px;
+    @media (max-width: 768px) { 
+        font-size: 16px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        font-size: 9px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        font-size: 12px;
+    };
+    @media (min-width: 1200px) { 
+        font-size: 16px;
+    };
+}
+
+/* Блок захвата внимания */
+
+.card-catch {
+    --bs-card-border-width: 1px;
+    --bs-card-border-color: black;
+    --bs-card-border-radius: 30px;
+    --bs-card-color: #F5F5F5;
+    --bs-card-bg: #0F0006;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background-color: var(--bs-card-bg);
+    background-image: url('../images/bg-1.png');
+    background-clip: border-box;
+    border: var(--bs-card-border-width) 
+        solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+    box-shadow: -4px 5px 0px #CC0047;
+    @media (max-width: 768px) { 
+        /* width: 350px; */
+        height: 675px;
+        padding: 40px 25px 90px 20px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        background-size: 80%;
+        height: 490px;
+        padding-top: 45px; 
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) {
+        background-size: 80%;
+        height: 590px;
+        padding-top: 60px; 
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        background-size: 80%;
+        height: 690px;
+        padding-top: 70px;
+    };
+    @media (min-width: 1400px) { 
+        background-size: 80%;
+        height: 790px;
+        padding-top: 75px;
+    };
+}
+
+.card-catch-button {
+    border-radius: 40px;
+    background-color: #CC0047;
+    color: #F5F5F5;
+    @media (max-width: 768px) { 
+        /* width: 310px; */
+        height: 80px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        width: 255px;
+        height: 45px;
+        font-size: 12px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        width: 405px;
+        height: 70px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        width: 355px;
+        height: 70px;
+    };
+    @media (min-width: 1400px) { 
+        width: 405px;
+        height: 80px;
+    };
+}
+
+.card-catch-button img {
+    @media (max-width: 768px) { 
+        width: 15%;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        width: 12%;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        width: 12%;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) {  
+        width: 12%;
+    };
+    @media (min-width: 1400px) { 
+        width: 15%;
+    };
+}
+
+.card-catch-header {
+    font-family: 'Strong',sans-serif;
+    text-transform: uppercase;
+    line-height: 100%;
+    @media (max-width: 768px) { 
+        font-size: 28px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        font-size: 31px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        font-size: 41px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        font-size: 49px;
+    };
+    @media (min-width: 1400px) { 
+        font-size: 60px;
+    };
+}
+
+.card-catch-row {
+    @media (max-width: 768px) {
+        font-size: 10px;
+        background-position-x: right;
+        /* background-position-y: 10px; */
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url("../images/vector-4.svg");
+    };
+}
+
+.card-catch-text {
+    font-family: 'Inter', sans-serif;
+    line-height: 140%;
+    @media (max-width: 768px) { 
+        font-size: 16px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        font-size: 10px;
+        padding: 25px 5px 30px 85px;
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-image: url("../images/vector-4.svg");
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        font-size: 12px;
+        padding: 30px 25px 50px 115px;
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-image: url("../images/vector-4.svg");
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        font-size: 14px;
+        padding: 50px 33px 70px 150px;
+        background-size: 65%;
+        background-repeat: no-repeat;
+        background-image: url("../images/vector-4.svg");
+    };
+    @media (min-width: 1400px) { 
+        font-size: 16px;
+        padding: 50px 55px 65px 150px;
+        background-repeat: no-repeat;
+        background-image: url("../images/vector-4.svg");
+    };
+}
+
+/* Блок "Мы разрабатываем CRM/ERP-системы" */
+
+.card-big {
+    --bs-card-border-width: 1px;
+    --bs-card-border-color: #F5F5F5;
+    --bs-card-border-radius: 30px;
+    --bs-card-color: #0F0006;
+    --bs-card-bg: #F5F5F5;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) 
+        solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+    box-shadow: -4px 5px 0px #0F0006;
+    @media (max-width: 768px) { 
+        /* width: 350px; */
+        height: 310px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        height: 210px;
+        padding: 25px 25px 10px 20px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        height: 305px;
+        padding: 40px 25px 10px 30px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        height: 355px;
+        padding: 50px 25px 10px 40px;
+    };
+    @media (min-width: 1400px) { 
+        height: 405px;
+        padding: 50px 25px 10px 50px;
+    };
+}
+
+.card-big img {
+    width: 80%;
+    height: 80%;
+    @media (max-width: 768px) { 
+        visibility: hidden;
+        display: none;
+    };
+    @media (min-width: 768px) { 
+        visibility: visible;
+        display: block;
+    };
+}
+
+.card-big-text {
+    font-family: 'Strong', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: uppercase;
+    @media (max-width: 768px) {
+        /* width: 350px; */
+        height: 310px;
+        font-size: 32px;
+        padding: 40px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        font-size: 26px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        font-size: 36px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        font-size: 40px;
+    };
+    @media (min-width: 1400px) { 
+        /* width: 837px;
+        height: 389px; */
+        font-size: 50px;
+    };
+}
+
+.card-small {
+    --bs-card-spacer-y: 40px;
+    --bs-card-spacer-x: 40px;
+    --bs-card-border-width: 1px;
+    --bs-card-border-color: #CC0047;
+    --bs-card-border-radius: 30px;
+    --bs-card-height: 240px;
+    --bs-card-width: 405px;
+    --bs-card-color: #F5F5F5;
+    --bs-card-bg: #CC0047;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) 
+        solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+    box-shadow: -2px 2px 0px #0F0006;
+    font-size: 16px;
+    line-height: 140%;
+    font-style: normal;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    @media (max-width: 768px) { 
+        /* width: 354px; */
+        height: 405px;
+        font-size: 16px;
+        padding: 40px 20px 20px 40px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        width: 210px;
+        height: 210px;
+        font-size: 10px;
+        padding: 20px 25px 20px 15px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        width: 305px;
+        height: 305px;
+        font-size: 12px;
+        padding: 30px 35px 20px 20px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        width: 355px;
+        height: 355px;
+        font-size: 16px;
+        padding: 30px 55px 25px 25px;
+    };
+    @media (min-width: 1400px) { 
+        width: 405px;
+        height: 405px;
+        font-size: 16px;
+        padding: 30px 50px 25px 25px;
+    };
+}
+
+.card-small-header {
+    font-family: 'Inter',sans-serif;
+    text-transform: uppercase;
+    line-height: 100%;
+    @media (max-width: 768px) { 
+        font-size: 28px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        font-size: 14px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        font-size: 20px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        font-size: 26px;
+    };
+    @media (min-width: 1400px) { 
+        font-size: 28px;
+    };
+}
+
+.card-small-text {
+    font-family: 'Inter', sans-serif;
+    line-height: 140%;
+    @media (max-width: 768px) { 
+        font-size: 16px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        font-size: 8px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        font-size: 12px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        font-size: 13px;
+    };
+    @media (min-width: 1400px) { 
+        font-size: 16px;
+    };
+}
+
+.header-font-size {
+    line-height: 100%;
+    text-transform: uppercase;
+    @media (max-width: 768px) {
+        /* width: 354px; */
+        font-family: 'Strong', sans-serif;
+        font-size: 32px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        font-family: 'Strong', sans-serif;
+        font-size: 36px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) {
+        font-family: 'Strong', sans-serif;
+        font-size: 44px;
+        padding-right: 150px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        font-family: 'Strong', sans-serif;
+        font-size: 50px;
+        padding-right: 230px;
+    };
+    @media (min-width: 1400px) { 
+        font-family: 'Strong', sans-serif;
+        font-size: 60px;
+        padding-right: 230px;
+    };
+}
+
+.row-header {
+    @media (max-width: 768px) {
+        justify-content: center !important;
+    };
+    @media (min-width: 768px) {
+        justify-content: start !important;
+    };
+}
+
+/* Блок карусели */
+
+.carousel {
+    overflow: hidden;
+    padding: 16px 0;
+    position: relative;
+
+    @media (max-width: 768px) {
+        /* width: 354px; */
+    };
+
+}
+
+.carousel-track {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    --bs-card-border-width: 1px;
+    --bs-card-border-color: black;
+    --bs-card-color: #0F0006;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    flex-direction: column;
+    min-width: 0;
+    background-color: #2D2D2D;
+    background-clip: border-box;
+    border: 1px solid black;
+    box-shadow: -2px 2px 0px #0F0006;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    box-sizing: border-box;
+
+    @media (max-width: 768px) {
+        width: 190px;
+        height: 190px;
+        flex: 0 0 190px;
+        border-radius: 30px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        width: 100px;
+        height: 100px;
+        flex: 0 0 100px;
+        border-radius: 15px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        width: 140px;
+        height: 140px;
+        flex: 0 0 140px;
+        border-radius: 20px;
+    };
+    @media (min-width: 1200px) {
+        width: 190px;
+        height: 190px;
+        flex: 0 0 190px;
+        border-radius: 30px;
+    };
+}
+
+.slide img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+}
+
+/* Блок подвала */
+
+.footer {
+    background-color: #0F0006;
+
+    @media (max-width: 768px) {
+        height: 820px;
+        padding: 80px 20px 50px 20px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        height: 228px;
+        padding: 30px 30px 0px 20px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) {
+        height: 268px;
+        padding: 50px 50px 50px 15px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) {
+        height: 368px; 
+        padding: 80px 50px 50px 100px;
+    };
+    @media (min-width: 1400px) { 
+        height: 468px;
+        padding: 80px 50px 50px 100px;
+    };
+}
+
+.footer-logo img{
+
+    @media (max-width: 768px) {
+        width: 250px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        width: 150px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) {
+        width: 150px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) {
+        width: 250px;
+    };
+    @media (min-width: 1400px) { 
+        width: 300px;
+    };
+}
+
+.footer-logo-text {
+    font-family: 'Inter', sans-serif;
+    line-height: 91%;
+    color: #CC0047;
+    line-break: anywhere;
+
+    @media (max-width: 768px) {
+        font-size: 15px;
+        width: 69px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        font-size: 8px;
+        width: 39px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) {
+        font-size: 10px;
+        width: 49px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) {
+        font-size: 12px;
+        width: 59px;
+    };
+    @media (min-width: 1400px) { 
+        font-size: 15px;
+        width: 69px;
+    };
+}
+
+.footer-link {
+    font-family: 'Inter', sans-serif;
+    line-height: 140%;
+    color: #F5F5F5;
+    text-decoration: none;
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        font-size: 8px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) {
+        font-size: 10px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) {
+        font-size: 12px;
+    };
+    @media (min-width: 1400px) { 
+        font-size: 16px;
+    };
+}
+
+.footer-row {
+
+    @media (max-width: 768px) {
+        margin-bottom: 15px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        margin-bottom: 0px;
+        height: 15px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) {
+        margin-bottom: 0px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) {
+        margin-bottom: 6px;
+    };
+    @media (min-width: 1400px) { 
+        margin-bottom: 15px;
+    };
+}
+
+.footer-icon {
+
+    @media (max-width: 768px) {
+        width: 35px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        width: 15px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) {
+        width: 20px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) {
+        width: 25px;
+    };
+    @media (min-width: 1400px) { 
+        width: 35px;
+    };
+}
+
+/* Блок благодарности */
+
+.card-gratitude {
+    --bs-card-border-width: 1px;
+    --bs-card-border-color: #CC0047;
+    --bs-card-border-radius: 30px;
+    --bs-card-color: #0F0006;
+    --bs-card-bg: #F5F5F5;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) 
+        solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+
+    @media (max-width: 768px) { 
+        height: 624px;
+        padding: 25px 30px 10px 20px;
+        box-shadow: -2px 3px 0px #CC0047;
+    
+        font-size: 10px;
+        background-position-x: right 5%;
+        background-position-y: 35%;
+        background-size: 40%;
+        background-repeat: no-repeat;
+        background-image: url("../images/gratitude-image.svg");
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        height: 460px;
+        padding: 25px 25px 10px 20px;
+        box-shadow: -2px 3px 0px #CC0047;
+    
+        font-size: 10px;
+        background-position-x: right 5%;
+        background-position-y: 50%;
+        background-size: 40%;
+        background-repeat: no-repeat;
+        background-image: url("../images/gratitude-image.svg");
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        height: 560px;
+        padding: 40px 25px 10px 30px;
+        box-shadow: -3px 4px 0px #CC0047;
+    
+        font-size: 10px;
+        background-position-x: right 5%;
+        background-position-y: 50%;
+        background-size: 40%;
+        background-repeat: no-repeat;
+        background-image: url("../images/gratitude-image.svg");
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        height: 660px;
+        padding: 50px 25px 10px 40px;
+        box-shadow: -4px 5px 0px #CC0047;
+    
+        font-size: 10px;
+        background-position-x: right 5%;
+        background-position-y: 50%;
+        background-size: 40%;
+        background-repeat: no-repeat;
+        background-image: url("../images/gratitude-image.svg");
+    };
+    @media (min-width: 1400px) { 
+        height: 760px;
+        padding: 80px 25px 80px 80px;
+        box-shadow: -4px 5px 0px #CC0047;
+    
+        font-size: 10px;
+        background-position-x: right 5%;
+        background-position-y: 50%;
+        background-size: 40%;
+        background-repeat: no-repeat;
+        background-image: url("../images/gratitude-image.svg");
+    };
+}
+
+.card-gratitude-header {
+    font-family: 'Strong',sans-serif;
+    text-transform: uppercase;
+    line-height: 100%;
+    @media (max-width: 768px) { 
+        font-size: 45px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        font-size: 60px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        font-size: 70px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        font-size: 80px;
+    };
+    @media (min-width: 1400px) { 
+        font-size: 100px;
+    };
+}
+
+.card-gratitude-text {
+    font-family: 'Inter', sans-serif;
+    line-height: 115%;
+    @media (max-width: 768px) { 
+        font-size: 20px;
+        margin-top: 25%;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        font-size: 10px;
+        padding-right: 25%;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        font-size: 14px;
+        padding-right: 25%;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        font-size: 16px;
+        padding-right: 25%;
+    };
+    @media (min-width: 1400px) { 
+        font-size: 20px;
+        padding-right: 25%;
+    };
+}
+
+.card-gratitude-button {
+    border-radius: 40px;
+    background-color: #CC0047;
+    color: #F5F5F5;
+    @media (max-width: 768px) { 
+        width: 100%;
+        height: 60px;
+        font-size: 16px;
+        margin-top: 10%;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        width: 75%;
+        height: 40px;
+        font-size: 8px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        width: 75%;
+        height: 50px;
+        font-size: 10px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        width: 75%;
+        height: 60px;
+        font-size: 12px;
+    };
+    @media (min-width: 1400px) { 
+        width: 75%;
+        height: 80px;
+        font-size: 16px;
+    };
+}
+
+.card-gratitude-button img {
+    @media (max-width: 768px) { 
+        width: 15%;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        width: 12%;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        width: 12%;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) {  
+        width: 12%;
+    };
+    @media (min-width: 1400px) { 
+        width: 15%;
+    };
+}
+
+/* Блок 404 */
+
+.card-404 {
+    --bs-card-border-width: 1px;
+    --bs-card-border-color: #0F0006;
+    --bs-card-border-radius: 30px;
+    --bs-card-color: #F5F5F5;
+    --bs-card-bg: #0F0006;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background-color: var(--bs-card-bg);
+    border: var(--bs-card-border-width) 
+        solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+    background-image: url("../images/bg-1.png"), url("../images/404-mask.svg"), url("../images/404.svg"), url("../images/404-smoth.svg");
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+
+    @media (max-width: 768px) { 
+        height: 624px;
+        padding: 80px 25px 50px 25px;
+        box-shadow: -2px 3px 0px #CC0047;
+        background-position: 0% -10%, 15% 30%, 15% 58%, 15% 86%;
+        background-size: 1000px, 250px, 250px, 250px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) {
+        height: 460px;
+        padding: 60px 25px 50px 60px;
+        box-shadow: -2px 3px 0px #CC0047;
+        background-position: left -50%, 85% 10%, 85% 36%, 85% 62%;
+        background-size: 77%, 27%, 27%, 27%;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        height: 560px;
+        padding: 70px 25px 80px 70px;
+        box-shadow: -3px 4px 0px #CC0047;
+        background-position: left -25%, 85% 10%, 85% 40%, 85% 70%;
+        background-size: 77%, 27%, 27%, 27%;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        height: 660px;
+        padding: 80px 25px 80px 80px;
+        box-shadow: -4px 5px 0px #CC0047;
+        background-position: left -25%, 85% 11%, 85% 41%, 85% 71%;
+        background-size: 77%, 27%, 27%, 27%;
+    };
+    @media (min-width: 1400px) { 
+        height: 760px;
+        padding: 100px 25px 80px 100px;
+        box-shadow: -4px 5px 0px #CC0047;
+        background-position: left -25%, 85% 15%, 85% 45%, 85% 75%;
+    };
+}
+
+.card-404-header {
+    font-family: 'Strong',sans-serif;
+    text-transform: uppercase;
+    line-height: 100%;
+    @media (max-width: 768px) { 
+        font-size: 45px;
+        width: 249px;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        font-size: 40px;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        font-size: 55px;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        font-size: 70px;
+    };
+    @media (min-width: 1400px) { 
+        font-size: 80px;
+    };
+}
+
+.card-404-button {
+    border-radius: 40px;
+    background-color: #CC0047;
+    color: #F5F5F5;
+    @media (max-width: 768px) { 
+        width: 100%;
+        height: 80px;
+        font-size: 16px;
+        margin-top: 10%;
+    };
+    @media ((min-width: 768px) and (max-width: 992px)) { 
+        width: 75%;
+        height: 40px;
+        font-size: 8px;
+        margin-top: 25%;
+    };
+    @media ((min-width: 992px) and (max-width: 1200px)) { 
+        width: 75%;
+        height: 50px;
+        font-size: 10px;
+        margin-top: 25%;
+    };
+    @media ((min-width: 1200px) and (max-width: 1400px)) { 
+        width: 75%;
+        height: 60px;
+        font-size: 12px;
+        margin-top: 25%;
+    };
+    @media (min-width: 1400px) { 
+        width: 75%;
+        height: 80px;
+        font-size: 16px;
+        margin-top: 25%;
+    };
+}

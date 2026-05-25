@@ -1,7 +1,421 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
-    <div>Дипломы: {{ diplomas }}</div>
-    <div>Проекты: {{ projects }}</div>
-    <div>Клиенты: {{ clients }}
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-content row g-2 g-md-3">
+          <div class="hero-title-group col-12 col-md-11 order-1">
+            <h1 class="hero-title-line">Разрабатываем<br> и внедряем</h1>
+          </div>
+          <div class="hero-subtitles col-5 col-md-1 order-4 order-md-1 align-self-start">
+            <div class="hero-subtitle">автоматизируем</div>
+            <div class="hero-subtitle">продажи и</div>
+            <div class="hero-subtitle">производство</div>
+          </div>
+
+          <div class="hero-desc col-12 col-md-3 order-3 order-md-3">проектируем архитектуру, в которой каждый процесс оцифрован, а рутина делегирована алгоритмам</div>
+
+          <div class="hero-pill-wrapper col-12 col-md-8 order-2 order-md-3">
+            <div class="hero-pill">
+              <span class="hero-pill-inner">ERP/CRM-системы</span>
+            </div>
+            <div class="hero-pill-tagline">
+              <div class="hero-subtitle">с нуля</div>
+              <div class="hero-subtitle">под ключ</div>
+            </div>
+          </div>
+
+          <div class="hero-image-col col-7 col-md-4 order-4 order-md-1 align-self-start">
+            <div class="hero-image-wrapper">
+              <img class="hero-img" src="{% static 'images/hero-img.png' %}" alt="">
+            </div>
+          </div>
+
+          <div class="hero-btn-wrapper col-12 col-md-4 order-5 order-md-4">
+            <a href="#" class="hero-btn">рассчитать стоимость
+              <img class="hero-btn-arrow" src="{% static 'images/arrow.svg' %}" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+        <div class="row d-flex row-header mb-4">
+            <div class="col-12">
+                <div class="header-font-size">Мы работаем в Чите и в Забайкальском крае</div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center mb-5">
+            <div class="col-12 col-md-12 mb-3">
+                <div class="card-work">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-12 col-md-4 mb-3">
+                                <div class="card-work-header">Автоматизируем госсектор и строительные компании</div>
+                            </div>
+                            <div class="col-12 col-md-4 mb-3">
+                                <div class="card-work-count-text">70+</div>
+                                <div class="card-work-small-text">реализованных проектов</div>
+                            </div>
+                            <div class="col-12 col-md-4 mb-3">
+                                <div class="card-work-count-text">20+</div>
+                                <div class="card-work-small-text">лет в IT-сфере</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="row d-flex justify-content-center mb-3">
+            <div class="col-sm-0 col-md-4"></div>
+            <div class="col-sm-auto col-xs-8 col-md-8 col-xl-8 mb-4">
+                <div class="header-font-size">Вам нужна автоматизация, если</div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center mb-5">
+            <div class="col-sm-auto col-lg-4 col-md-4 col-lg-4 mb-3">
+                <div class="card-vertical">
+                    <div class="card-body">
+                        <div class="card-text">У вас есть сложности в настраивании процессов, нет системы ведения документов, много штрафов из-за просрочки</div>
+                        <img src="{% static '/images/vector-1.svg' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+                <div class="card-horizontal">
+                    <div class="card-body">
+                        <div class="card-text">Разные ведомства внедряли софт в разное время. В итоге системы плохо общаются друг с другом (проблемы интероперабельности), и данные приходится переносить вручную</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+                <div class="card-vertical">
+                    <div class="card-body">
+                        <div class="card-text">Технологии меняются в считанные месяцы, а внесение правок в регламенты или федеральные законы может занимать годы</div>
+                        <img src="{% static '/images/vector-1.svg' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+                <div class="card-horizontal">
+                    <div class="card-body">
+                        <div class="card-text">Необходимо перейти на отечественное ПО, что требует переписывания огромного массива старого кода, который продолжает работать по старой системе</div>
+                        <img src="{% static '/images/vector-1.svg' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+                <div class="card-vertical">
+                    <div class="card-body">
+                        <div class="card-text">Нужна настройка работы в защищенных сетях без доступа к интернету, что усложняет обновление софта и использование библиотек с открытым кодом.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+                <div class="card-horizontal">
+                    <div class="card-body">
+                        <div class="card-text">Вы часто сталкиваетесь с дублированием данных или данные в разных программах не бьются между собой</div>
+                        <img src="{% static '/images/vector-1.svg' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+                <div class="card-vertical">
+                    <div class="card-body">
+                        <div class="card-vertical-text">Большой процент заявок теряются в почте и мессенджерах, не удается контролировать объемы техники и бюджета, низкая цифровая грамотность</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+                <div class="card-horizontal">
+                    <div class="card-body">
+                        <div class="card-text">Недобросовестные менеджеры забирают базу клиентов после ухода</div>
+                        <img src="{% static '/images/vector-1.svg' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4">
+                <div class="card-vertical">
+                    <div class="card-body">
+                        <div class="card-text">Есть потребность в масштабировании, но не выстроен контроль снабжения, графики в таблицах живут отдельно от реальности</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Мы понимаем, как решить ваши боли -->
+    <section class="features">
+      <h2 class="section-title text-start text-md-center">Мы понимаем, как
+        <br class="d-none d-md-inline">
+        решить ваши боли</h2>
+      <div class="features-card">
+        <ul class="features-list row g-2 g-md-3">
+          <li class="features-item col-12 col-md-4">
+            <span class="features-number">1</span>
+            <span class="features-text">Интергируем старые системы с новыми сервисами</span>
+          </li>
+          <li class="features-item col-12 col-md-4">
+            <span class="features-number">2</span>
+            <span class="features-text">Автоматизируем бардак в управлении вместо его реинжиниринга</span>
+          </li>
+          <li class="features-item col-12 col-md-4">
+            <span class="features-number">3</span>
+            <span class="features-text">Делаем возможным быстро менять требования в ходе разработки</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Больше, чем просто ERP -->
+    <section class="erp">
+      <h2 class="section-title section-title-left erp-title">Больше, чем
+        <br class="d-inline d-md-none">
+        просто ERP</h2>
+      <div class="erp-cards row g-3">
+        <div class="erp-main col-12 col-md-4">
+          <div class="card card-dark">
+            <img class="card-icon" src="{% static 'images/line-7.svg' %}" alt="" width="145" height="6">
+            <h3 class="card-title">Автоматизируем
+              <br class="d-inline">
+              всё, что можно
+              <br class="d-inline">
+              не делать руками</h3>
+          </div>
+        </div>
+        <div class="erp-side col-12 col-md-8">
+          <div class="row g-3">
+            <div class="col-12">
+              <div class="card">
+                <h3 class="card-title">Индивидуальная разработка/настройка</h3>
+                <div class="card-text">Система подстраивается под ваш бизнес, а не наоборот</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="card">
+                <h3 class="card-title">Автоматизация</h3>
+                <div class="card-text">Авто-создание счетов, отправка уведомлений клиентам в мессенджер, постановка задач менеджерам</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="card">
+                <h3 class="card-title">Бесшовная интеграция</h3>
+                <div class="card-text">Объединим CRM с вашим сайтом, 1С, складским учетом, мессанджерами, для удобства контроля бизнеса с телефона</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="card">
+                <h3 class="card-title">Высокий уровень безопасности</h3>
+                <div class="card-text">Разграничение прав доступа, логирование всех действий и защита от выгрузки базы</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+        <div class="row d-flex justify-content-center mb-5">
+            <div class="col-sm-auto col-lg-12 mb-3">
+                <div class="card-catch">
+                    <div class="card-body d-flex flex-column p-0">
+                        <div class="row mb-4">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-7">
+                                <div class="card-catch-header">ERP-система как фундамент для масштабирования вашего бизнес без найма</div>
+                            </div>
+                        </div>
+                        <div class="row mb-5 card-catch-row">
+                            <div class="col-md-3"></div>
+                            <div class="col-sm-8 col-md-4 mb-4">
+                                <div class="card-catch-text">Создаем интерактивные базы знаний для ваших сотрудников</div>
+                            </div>
+                            <div class="col-sm-8 col-md-4">
+                                <div class="card-catch-text">Система заменит человеческий контроль за данными компании</div>
+                            </div>
+                        </div>
+                        <div class="row mt-sm-5 mt-md-0">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-7">
+                                <button type="button" class="btn card-catch-button">Расчитать стоимость <img class="ms-3" src="./assets/images/arrow-1.svg" alt=""></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="row d-flex row-header mb-3">
+            <div class="col-sm-auto">
+                <div class="header-font-size">Мы разрабатываем CRM/ERP-системы</div>
+            </div>
+        </div>
+
+        <div class="row justify-content-sm-center justify-content-md-end mb-5">
+            <div class="col-sm-auto col-md-8">
+                <div class="card-big">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-sm-auto col-md-8">
+                                <div class="card-big-text">а также работаем с Искусственным интеллектом, делаем мобильные приложения и сложные сайты</div>
+                            </div>
+                            <div class="col-sm-0 col-md-4 px-0 align-self-end" id="svg_img">
+                                <img src="{% static 'images/vector-3.svg' %}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center mb-5">
+            <div class="col-sm-auto col-lg-4 mb-3">
+                <div class="card-small">
+                    <div class="card-body d-flex flex-column justify-content-between p-0">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card-small-header">Искусственный интеллект</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card-small-text mb-0">Автоматизируйте бизнес с помощью ИИ. Чат-боты, рекомендательные системы, инструменты аналитики и обработки данных, упрощая сложные задачи. Интеграция искусственного интеллекта в ваш бизнес для роста и эффективности</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto col-lg-4 mb-3">
+                <div class="card-small">
+                    <div class="card-body d-flex flex-column justify-content-between p-0">
+                        <div class="row">
+                            <div class="col pe-4">
+                                <div class="card-small-header">Мобильное приложение</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card-small-text mb-0">Создаем удобные мобильные приложения для бизнеса и пользователей. Разрабатываем нативные и кроссплатформенные приложения для iOS и Android, которые решают ваши задачи и привлекают клиентов</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto col-lg-4">
+                <div class="card-small">
+                    <div class="card-body d-flex flex-column justify-content-between p-0">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card-small-header">Сайты под ключ</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card-small-text mb-0">Создаем многостраничные сайты и интернет-магазины с интеграцией с 1С, мессенджерами </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <div class="row d-flex row-header mb-3">
+            <div class="col-sm-auto">
+                <div class="header-font-size">Нам доверяют</div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-auto">
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <div class="slide"><img src="{% static 'images/slider/1.png' %}" class="img-block" alt="icon 1"></div>
+                        <div class="slide"><img src="{% static 'images/slider/2.png' %}" class="img-block" alt="icon 2"></div>
+                        <div class="slide"><img src="{% static 'images/slider/3.png' %}" class="img-block" alt="icon 3"></div>
+                        <div class="slide"><img src="{% static 'images/slider/4.png' %}" class="img-block" alt="icon 4"></div>
+                        <div class="slide"><img src="{% static 'images/slider/5.png' %}" class="img-block" alt="icon 5"></div>
+                        <div class="slide"><img src="{% static 'images/slider/6.png' %}" class="img-block" alt="icon 6"></div>
+                        <div class="slide"><img src="{% static 'images/slider/7.png' %}" class="img-block" alt="icon 7"></div>
+                        <div class="slide"><img src="{% static 'images/slider/8.png' %}" class="img-block" alt="icon 8"></div>
+                        <div class="slide"><img src="{% static 'images/slider/9.png' %}" class="img-block" alt="icon 9"></div>
+                        <div class="slide"><img src="{% static 'images/slider/10.png' %}" class="img-block" alt="icon 10"></div>
+                        <div class="slide"><img src="{% static 'images/slider/11.png' %}" class="img-block" alt="icon 11"></div>
+                        <div class="slide"><img src="{% static 'images/slider/12.png' %}" class="img-block" alt="icon 12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Нам говорят спасибо -->
+    <section class="reviews">
+      <h2 class="section-title section-title-left">Нам говорят
+        <br class="d-inline d-md-none">
+        спасибо</h2>
+      <div id="reviews-slider" class="splide" aria-label="Сертификаты и грамоты">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% for diplom in diplomas %} 
+            <li class="splide__slide reviews-slide" data-slide-index="0">
+              <img class="reviews-img" src="/media/{{diplom.avatar}}" alt="Грамота" width="320" height="420">
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fullscreen gallery modal: Bootstrap 5 Modal with synced main + thumbnail Splide -->
+    <div class="modal fade" id="reviewsGalleryModal" tabindex="-1" aria-labelledby="reviewsGalleryModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content reviews-modal-content">
+          <div class="modal-header reviews-modal-header">
+            <h2 class="modal-title visually-hidden" id="reviewsGalleryModalLabel">Галерея сертификатов</h2>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body reviews-modal-body">
+            <section id="top-slider" class="splide reviews-modal-main" aria-label="Просмотр сертификата">
+              <div class="splide__track">
+                <ul class="splide__list">
+                    {% for diplom in diplomas %} 
+                    <li class="splide__slide"><img class="reviews-img" src="/media/{{diplom.avatar}}" alt="Грамота" width="320" height="420"></li>
+                    {% endfor %}
+                </ul>
+              </div>
+            </section>
+            <div class="reviews-modal-thumbs-wrapper">
+              <section id="thumbnail-slider" class="splide reviews-modal-thumbs" aria-label="Миниатюры сертификатов">
+                <div class="splide__track">
+                  <ul class="splide__list">
+                    {% for diplom in diplomas %} 
+                    <li class="splide__slide"><img class="reviews-img" src="/media/{{diplom.avatar}}" alt="Грамота" width="320" height="420"></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll/dist/js/splide-extension-auto-scroll.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'js/slider.js' %}"></script>
+  <script src="{% static 'js/header-scroll.js' %}"></script>
+  <script src="{% static 'js/reviews-lightbox.js' %}"></script>
+    
 {% endblock %}

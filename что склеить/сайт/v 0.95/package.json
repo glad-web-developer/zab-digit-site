@@ -1,0 +1,11 @@
+{
+  "name": "zab_cifra_workflow",
+  "private": true,
+  "scripts": {
+    "build:css": "sass scss/style.scss css/style.css",
+    "watch:css": "sass scss/style.scss css/style.css --watch"
+  },
+  "devDependencies": {
+    "sass": "^1.69.0"
+  }
+}

@@ -1,0 +1,13 @@
+.carousel {
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.slide {
+    display: flex;
+    column-gap: 16px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}

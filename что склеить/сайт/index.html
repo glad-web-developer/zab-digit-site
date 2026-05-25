@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рабочий проект #1</title>
+    <link rel="stylesheet" href="./assets/bootstrap-5.3.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/style-9.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <style>
+      .carousel {
+        overflow: hidden;
+        padding: 16px 0;
+        position: relative;
+      }
+      
+      .carousel-track {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        transition: transform 0.5s ease;
+      }
+      
+      .slide {
+        flex: 0 0 190px;
+        width: 190px;
+        height: 190px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px;
+        box-sizing: border-box;
+      }
+      
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    </style>
+    
+    <div class="container my-5 ms-auto">
+        <div class="row mb-4">
+            <div class="col header-font-size">Нам доверяют</div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <div class="slide"><img src="./assets/slider/1.png" class="img-block" alt="icon 1"></div>
+                        <div class="slide"><img src="./assets/slider/2.png" class="img-block" alt="icon 2"></div>
+                        <div class="slide"><img src="./assets/slider/3.png" class="img-block" alt="icon 3"></div>
+                        <div class="slide"><img src="./assets/slider/4.png" class="img-block" alt="icon 4"></div>
+                        <div class="slide"><img src="./assets/slider/5.png" class="img-block" alt="icon 5"></div>
+                        <div class="slide"><img src="./assets/slider/6.png" class="img-block" alt="icon 6"></div>
+                        <div class="slide"><img src="./assets/slider/7.png" class="img-block" alt="icon 7"></div>
+                        <div class="slide"><img src="./assets/slider/8.png" class="img-block" alt="icon 8"></div>
+                        <div class="slide"><img src="./assets/slider/9.png" class="img-block" alt="icon 9"></div>
+                        <div class="slide"><img src="./assets/slider/10.png" class="img-block" alt="icon 10"></div>
+                        <div class="slide"><img src="./assets/slider/11.png" class="img-block" alt="icon 11"></div>
+                        <div class="slide"><img src="./assets/slider/12.png" class="img-block" alt="icon 12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/bootstrap-5.3.0-dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+      (function(){
+        const carousel = document.querySelector('.carousel');
+        const track = carousel.querySelector('.carousel-track');
+        
+        const slideWidth = 190;
+        const gap = 16;
+        const itemWidth = slideWidth + gap;
+        let currentPos = 0;
+        
+        function moveCarousel() {
+          currentPos -= itemWidth;
+          track.style.transform = `translateX(${currentPos}px)`;
+          
+          // После завершения анимации переносим первый элемент в конец
+          setTimeout(() => {
+            const firstSlide = track.querySelector('.slide');
+            track.appendChild(firstSlide);
+            currentPos += itemWidth;
+            track.style.transition = 'none';
+            track.style.transform = `translateX(${currentPos}px)`;
+            
+            // Восстанавливаем переход для следующей анимации
+            setTimeout(() => {
+              track.style.transition = 'transform 0.5s ease';
+              moveCarousel();
+            }, 10);
+          }, 1200);
+        }
+        
+        // Запускаем карусель
+        moveCarousel();
+      })();
+    </script>
+
+</body>
+</html>

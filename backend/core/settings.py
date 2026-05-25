@@ -60,8 +60,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'public_html',
+
             BASE_DIR / 'apps/material_admin/templates',
+            BASE_DIR / 'core/templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -124,7 +125,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -170,6 +171,8 @@ CSRF_TRUSTED_ORIGINS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public_html', 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'public_html', 'static')
 
+
+APPEND_SLASH = True
 
 
 from core.local_settings import *
