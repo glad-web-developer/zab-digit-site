@@ -1,3 +1,76 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+
+    <!-- ====== ЗАГОЛОВОК ====== -->
+    <section class="mb-4 mt-4">
+        <div class="row d-flex row-header mb-4">
+            <div class="col-12">
+                <div class="header-font-size">Наши реализованные проекты</div>
+            </div>
+        </div>
+
+        <!-- Фильтр по категориям -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="project-filter d-flex flex-wrap gap-2">
+                    <a href="/project/"
+                       class="project-filter-btn {% if not active_category %}project-filter-btn-active{% endif %}">
+                        Все проекты
+                    </a>
+                    {% for value, label in categories %}
+                    <a href="/project/?category={{ value }}"
+                       class="project-filter-btn {% if active_category == value %}project-filter-btn-active{% endif %}">
+                        {{ label }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== КАРТОЧКИ ПРОЕКТОВ ====== -->
+    <section class="mb-5">
+        {% if projects %}
+        <div class="row g-3" id="projects-grid">
+            {% for project in projects %}
+            <div class="col-12 col-md-6 col-lg-4 project-grid-item">
+                <div class="card project-card h-100">
+                    {% if project.thumbnail %}
+                    <img src="{{ project.thumbnail.url }}" class="card-img-top project-card-img" alt="{{ project.name }}">
+                    {% else %}
+                    <div class="project-card-placeholder d-flex align-items-center justify-content-center">
+                        <img src="{% static 'images/logo.svg' %}" alt="{{ project.name }}" width="80" height="75" style="opacity:0.3;">
+                    </div>
+                    {% endif %}
+                    <div class="card-body d-flex flex-column p-3">
+                        {% if project.category %}
+                        <span class="project-card-category mb-2">{{ project.get_category_display }}</span>
+                        {% endif %}
+                        <h3 class="project-card-title">{{ project.name }}</h3>
+                        {% if project.description %}
+                        <div class="project-card-desc">{{ project.description|safe|truncatewords_html:25 }}</div>
+                        {% endif %}
+                        <a href="/project/{{ project.slug }}/" class="project-card-btn mt-auto">смотреть кейс
+                            <img src="{% static 'images/arrow.svg' %}" alt="" class="ms-2">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col-12 text-center py-5">
+                <p class="text-muted">Проекты в данной категории не найдены</p>
+                <a href="/project/" class="btn card-catch-button mt-3">Все проекты</a>
+            </div>
+        </div>
+        {% endif %}
+    </section>
+
+    {% with form_source="Страница кейсов" %}
+        {% include 'includes/contact_form.html' %}
+    {% endwith %}
+
 {% endblock %}

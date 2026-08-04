@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
     'import_export',
     'corsheaders',
     'rest_framework',
@@ -39,8 +41,8 @@ INSTALLED_APPS = [
     'apps.project',
     'apps.client',
     'apps.diploma',
-
-
+    'apps.contact',
+    'apps.pages',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.site_settings',
             ],
         },
     },

@@ -1,37 +1,43 @@
 from django.contrib import admin
-from django.template.defaultfilters import safe
+from django.utils.html import format_html
 from import_export.admin import ImportExportModelAdmin
 
-from .models import Diploma
-
-
+from .models import Award, Diploma
 
 
 @admin.register(Diploma)
 class DiplomaAdmin(ImportExportModelAdmin):
-    list_display = [
-        'id',
-        'avatar_preview',
-        'order_index',
-    ]
-
-    list_display_links = [
-        'id',
-
-    ]
-
-    list_filter = ['order_index']
-
-
+    list_display = ['id', 'name', 'preview', 'order_index']
+    list_display_links = ['id', 'name']
+    list_editable = ['order_index']
+    search_fields = ['name']
     save_on_top = True
-    save_as = True
 
-    # Превью аватарки
-    def avatar_preview(self, obj):
+    def preview(self, obj):
         if obj.avatar:
-            return safe(f'<img src="{obj.avatar.url}" style="max-height: 50px; max-width: 50px; margin-right:15px" />')
-        return "-"
+            return format_html(
+                '<img src="{}" style="max-height:80px;max-width:80px;'
+                'object-fit:contain;border-radius:4px;">',
+                obj.avatar.url
+            )
+        return '—'
+    preview.short_description = 'Превью'
 
-    avatar_preview.short_description = 'Аватар'
 
+@admin.register(Award)
+class AwardAdmin(ImportExportModelAdmin):
+    list_display = ['id', 'name', 'preview', 'order_index']
+    list_display_links = ['id', 'name']
+    list_editable = ['order_index']
+    search_fields = ['name']
+    save_on_top = True
 
+    def preview(self, obj):
+        if obj.image:
+            return format_html(
+                '<img src="{}" style="max-height:80px;max-width:80px;'
+                'object-fit:contain;border-radius:4px;">',
+                obj.image.url
+            )
+        return '—'
+    preview.short_description = 'Превью'

@@ -1,3 +1,186 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+
+    <!-- ====== ПРЕВЬЮ ====== -->
+    {% if project.thumbnail %}
+    <section class="mt-4 mb-4">
+        <div class="row">
+            <div class="col-12">
+                <img src="{{ project.thumbnail.url }}"
+                     class="img-fluid w-100 project-dv-hero"
+                     alt="{{ project.name }}">
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ====== ХЛЕБНЫЕ КРОШКИ ====== -->
+    <section class="mb-3">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb project-breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/" class="project-breadcrumb-link">главная</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="/project/" class="project-breadcrumb-link">кейсы</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            {{ project.name }}
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== НАЗВАНИЕ ====== -->
+    <section class="mb-4">
+        <div class="row">
+            <div class="col-12">
+                {% if project.category %}
+                <span class="project-card-category d-inline-block mb-2">
+                    {{ project.get_category_display }}
+                </span>
+                {% endif %}
+                <h1 class="header-font-size">{{ project.name }}</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== ОПИСАНИЕ ====== -->
+    {% if project.description %}
+    <section class="mb-5">
+        <div class="row">
+            <div class="col-12 col-lg-10">
+                <div class="project-dv-description">
+                    {{ project.description|safe }}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ====== ГАЛЕРЕЯ ====== -->
+    {% if gallery %}
+    <section class="mb-5">
+        <div class="row d-flex row-header mb-4">
+            <div class="col-12">
+                <div class="header-font-size" style="font-size:clamp(20px,3vw,36px);">Фотографии проекта</div>
+            </div>
+        </div>
+        <div class="row g-3" id="project-gallery">
+            {% for img in gallery %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ img.image.url }}" class="project-gallery-link"
+                   data-gallery="project" data-caption="{{ img.caption }}">
+                    <div class="project-gallery-item">
+                        <img src="{{ img.image.url }}"
+                             alt="{{ img.caption|default:project.name }}"
+                             class="project-gallery-img">
+                        {% if img.caption %}
+                        <div class="project-gallery-caption">{{ img.caption }}</div>
+                        {% endif %}
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ====== МЫ ПОНИМАЕМ КАК РЕШИТЬ ====== -->
+    <section class="features mb-5">
+      <h2 class="section-title text-start text-md-center">Мы понимаем, как
+        <br class="d-none d-md-inline">
+        решить ваши боли</h2>
+      <div class="features-card">
+        <ul class="features-list row g-2 g-md-3">
+          <li class="features-item col-12 col-md-4">
+            <span class="features-number">1</span>
+            <span class="features-text">Интегрируем старые системы с новыми сервисами</span>
+          </li>
+          <li class="features-item col-12 col-md-4">
+            <span class="features-number">2</span>
+            <span class="features-text">Автоматизируем бардак в управлении вместо его реинжиниринга</span>
+          </li>
+          <li class="features-item col-12 col-md-4">
+            <span class="features-number">3</span>
+            <span class="features-text">Делаем возможным быстро менять требования в ходе разработки</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====== ФОРМА ====== -->
+    {% with form_source=project.name %}
+        {% include 'includes/contact_form.html' %}
+    {% endwith %}
+
+    <!-- ====== НАЗАД ====== -->
+    <section class="mb-5">
+        <div class="row">
+            <div class="col-12">
+                <a href="/project/" class="project-back-link">← все кейсы</a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Лёгкий lightbox для галереи -->
+<script>
+(function() {
+    var links = document.querySelectorAll('.project-gallery-link');
+    if (!links.length) return;
+
+    var overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;'
+        + 'display:none;align-items:center;justify-content:center;flex-direction:column;cursor:pointer;';
+    var img = document.createElement('img');
+    img.style.cssText = 'max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px;';
+    var cap = document.createElement('p');
+    cap.style.cssText = 'color:#fff;margin-top:12px;font-size:14px;text-align:center;';
+    overlay.appendChild(img);
+    overlay.appendChild(cap);
+    document.body.appendChild(overlay);
+
+    var items = Array.from(links);
+    var cur = 0;
+
+    function open(idx) {
+        cur = idx;
+        img.src = items[cur].href;
+        cap.textContent = items[cur].dataset.caption || '';
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    items.forEach(function(a, i) {
+        a.addEventListener('click', function(e) {
+            e.preventDefault();
+            open(i);
+        });
+    });
+
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay || e.target === img) close();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (overlay.style.display === 'none') return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowRight') open((cur + 1) % items.length);
+        if (e.key === 'ArrowLeft')  open((cur - 1 + items.length) % items.length);
+    });
+})();
+</script>
 {% endblock %}

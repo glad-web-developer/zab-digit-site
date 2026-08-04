@@ -1,5 +1,5 @@
-{#СТРАНИЦА БЛАГОДАРОНСТИ#}
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
     <div class="row card-gratitude-row d-flex justify-content-center my-3">
         <div class="col-sm-auto col-lg-12 mb-3">
@@ -12,12 +12,12 @@
                     </div>
                     <div class="row mb-5">
                         <div class="col-12 col-md-5">
-                            <div class="card-gratitude-text">Мы обязательно свяжемся с вами в ближайщее время, и обсудим все детали вашего проекта</div>
+                            <div class="card-gratitude-text">Мы обязательно свяжемся с вами в ближайшее время, и обсудим все детали вашего проекта</div>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-12 col-md-5">
-                            <button onclick="location.href='/';" type="button" class="btn card-gratitude-button">Вернуться на главную <img class="ms-3" src="./assets/images/arrow-1.svg" alt=""></button>
+                            <button onclick="location.href='/';" type="button" class="btn card-gratitude-button">Вернуться на главную <img class="ms-3" src="{% static 'images/arrow-1.svg' %}" alt=""></button>
                         </div>
                     </div>
                 </div>

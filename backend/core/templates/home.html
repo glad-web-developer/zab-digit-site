@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load static %}
+{% block content %}
 
-    <!-- Hero -->
+    <!-- ====== HERO ====== -->
     <section class="hero">
       <div class="hero-card">
         <div class="hero-content row g-2 g-md-3">
@@ -34,7 +34,7 @@
           </div>
 
           <div class="hero-btn-wrapper col-12 col-md-4 order-5 order-md-4">
-            <a href="#" class="hero-btn">рассчитать стоимость
+            <a href="#обсудим-проект" class="hero-btn">рассчитать стоимость
               <img class="hero-btn-arrow" src="{% static 'images/arrow.svg' %}" alt="">
             </a>
           </div>
@@ -42,10 +42,11 @@
       </div>
     </section>
 
-    <section>
+    <!-- ====== О КОМПАНИИ ====== -->
+    <section id="о-компании">
         <div class="row d-flex row-header mb-4">
             <div class="col-12">
-                <div class="header-font-size">Мы работаем в Чите и в Забайкальском крае</div>
+                <div class="header-font-size">Мы работаем в Чите и в Забайкальском крае</div>
             </div>
         </div>
 
@@ -72,6 +73,7 @@
         </div>
     </section>
 
+    <!-- ====== ВАМ НУЖНА АВТОМАТИЗАЦИЯ ====== -->
     <section>
         <div class="row d-flex justify-content-center mb-3">
             <div class="col-sm-0 col-md-4"></div>
@@ -81,68 +83,68 @@
         </div>
 
         <div class="row d-flex justify-content-center mb-5">
-            <div class="col-sm-auto col-lg-4 col-md-4 col-lg-4 mb-3">
+            <div class="col-sm-auto col-lg-4 col-md-4 mb-3">
                 <div class="card-vertical">
                     <div class="card-body">
                         <div class="card-text">У вас есть сложности в настраивании процессов, нет системы ведения документов, много штрафов из-за просрочки</div>
-                        <img src="{% static '/images/vector-1.svg' %}">
+                        <img src="{% static 'images/vector-1.svg' %}" alt="">
                     </div>
                 </div>
             </div>
-            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+            <div class="col-sm-auto col-xs-4 col-md-4 mb-3">
                 <div class="card-horizontal">
                     <div class="card-body">
                         <div class="card-text">Разные ведомства внедряли софт в разное время. В итоге системы плохо общаются друг с другом (проблемы интероперабельности), и данные приходится переносить вручную</div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+            <div class="col-sm-auto col-xs-4 col-md-4 mb-3">
                 <div class="card-vertical">
                     <div class="card-body">
                         <div class="card-text">Технологии меняются в считанные месяцы, а внесение правок в регламенты или федеральные законы может занимать годы</div>
-                        <img src="{% static '/images/vector-1.svg' %}">
+                        <img src="{% static 'images/vector-1.svg' %}" alt="">
                     </div>
                 </div>
             </div>
-            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+            <div class="col-sm-auto col-xs-4 col-md-4 mb-3">
                 <div class="card-horizontal">
                     <div class="card-body">
                         <div class="card-text">Необходимо перейти на отечественное ПО, что требует переписывания огромного массива старого кода, который продолжает работать по старой системе</div>
-                        <img src="{% static '/images/vector-1.svg' %}">
+                        <img src="{% static 'images/vector-1.svg' %}" alt="">
                     </div>
                 </div>
             </div>
-            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+            <div class="col-sm-auto col-xs-4 col-md-4 mb-3">
                 <div class="card-vertical">
                     <div class="card-body">
                         <div class="card-text">Нужна настройка работы в защищенных сетях без доступа к интернету, что усложняет обновление софта и использование библиотек с открытым кодом.</div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+            <div class="col-sm-auto col-xs-4 col-md-4 mb-3">
                 <div class="card-horizontal">
                     <div class="card-body">
                         <div class="card-text">Вы часто сталкиваетесь с дублированием данных или данные в разных программах не бьются между собой</div>
-                        <img src="{% static '/images/vector-1.svg' %}">
+                        <img src="{% static 'images/vector-1.svg' %}" alt="">
                     </div>
                 </div>
             </div>
-            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+            <div class="col-sm-auto col-xs-4 col-md-4 mb-3">
                 <div class="card-vertical">
                     <div class="card-body">
                         <div class="card-vertical-text">Большой процент заявок теряются в почте и мессенджерах, не удается контролировать объемы техники и бюджета, низкая цифровая грамотность</div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4 mb-3">
+            <div class="col-sm-auto col-xs-4 col-md-4 mb-3">
                 <div class="card-horizontal">
                     <div class="card-body">
                         <div class="card-text">Недобросовестные менеджеры забирают базу клиентов после ухода</div>
-                        <img src="{% static '/images/vector-1.svg' %}">
+                        <img src="{% static 'images/vector-1.svg' %}" alt="">
                     </div>
                 </div>
             </div>
-            <div class="col-sm-auto col-xs-4 col-md-4 col-lg-4">
+            <div class="col-sm-auto col-xs-4 col-md-4">
                 <div class="card-vertical">
                     <div class="card-body">
                         <div class="card-text">Есть потребность в масштабировании, но не выстроен контроль снабжения, графики в таблицах живут отдельно от реальности</div>
@@ -152,7 +154,7 @@
         </div>
     </section>
 
-    <!-- Мы понимаем, как решить ваши боли -->
+    <!-- ====== МЫ ПОНИМАЕМ, КАК РЕШИТЬ ====== -->
     <section class="features">
       <h2 class="section-title text-start text-md-center">Мы понимаем, как
         <br class="d-none d-md-inline">
@@ -161,7 +163,7 @@
         <ul class="features-list row g-2 g-md-3">
           <li class="features-item col-12 col-md-4">
             <span class="features-number">1</span>
-            <span class="features-text">Интергируем старые системы с новыми сервисами</span>
+            <span class="features-text">Интегрируем старые системы с новыми сервисами</span>
           </li>
           <li class="features-item col-12 col-md-4">
             <span class="features-number">2</span>
@@ -175,8 +177,8 @@
       </div>
     </section>
 
-    <!-- Больше, чем просто ERP -->
-    <section class="erp">
+    <!-- ====== БОЛЬШЕ, ЧЕМ ПРОСТО ERP ====== -->
+    <section class="erp" id="о-продукте">
       <h2 class="section-title section-title-left erp-title">Больше, чем
         <br class="d-inline d-md-none">
         просто ERP</h2>
@@ -208,7 +210,7 @@
             <div class="col-12">
               <div class="card">
                 <h3 class="card-title">Бесшовная интеграция</h3>
-                <div class="card-text">Объединим CRM с вашим сайтом, 1С, складским учетом, мессанджерами, для удобства контроля бизнеса с телефона</div>
+                <div class="card-text">Объединим CRM с вашим сайтом, 1С, складским учетом, мессенджерами, для удобства контроля бизнеса с телефона</div>
               </div>
             </div>
             <div class="col-12">
@@ -222,6 +224,7 @@
       </div>
     </section>
 
+    <!-- ====== ERP КАК ФУНДАМЕНТ ====== -->
     <section>
         <div class="row d-flex justify-content-center mb-5">
             <div class="col-sm-auto col-lg-12 mb-3">
@@ -245,7 +248,7 @@
                         <div class="row mt-sm-5 mt-md-0">
                             <div class="col-md-4"></div>
                             <div class="col-md-7">
-                                <button type="button" class="btn card-catch-button">Расчитать стоимость <img class="ms-3" src="./assets/images/arrow-1.svg" alt=""></button>
+                                <a href="#обсудим-проект" type="button" class="btn card-catch-button">Рассчитать стоимость <img class="ms-3" src="{% static 'images/arrow-1.svg' %}" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -254,7 +257,8 @@
         </div>
     </section>
 
-    <section>
+    <!-- ====== МЫ РАЗРАБАТЫВАЕМ CRM/ERP ====== -->
+    <section id="преимущества">
         <div class="row d-flex row-header mb-3">
             <div class="col-sm-auto">
                 <div class="header-font-size">Мы разрабатываем CRM/ERP-системы</div>
@@ -270,58 +274,11 @@
                                 <div class="card-big-text">а также работаем с Искусственным интеллектом, делаем мобильные приложения и сложные сайты</div>
                             </div>
                             <div class="col-sm-0 col-md-4 px-0 align-self-end" id="svg_img">
-                                <img src="{% static 'images/vector-3.svg' %}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row d-flex justify-content-center mb-5">
-            <div class="col-sm-auto col-lg-4 mb-3">
-                <div class="card-small">
-                    <div class="card-body d-flex flex-column justify-content-between p-0">
-                        <div class="row">
-                            <div class="col">
-                                <div class="card-small-header">Искусственный интеллект</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="card-small-text mb-0">Автоматизируйте бизнес с помощью ИИ. Чат-боты, рекомендательные системы, инструменты аналитики и обработки данных, упрощая сложные задачи. Интеграция искусственного интеллекта в ваш бизнес для роста и эффективности</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-auto col-lg-4 mb-3">
-                <div class="card-small">
-                    <div class="card-body d-flex flex-column justify-content-between p-0">
-                        <div class="row">
-                            <div class="col pe-4">
-                                <div class="card-small-header">Мобильное приложение</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="card-small-text mb-0">Создаем удобные мобильные приложения для бизнеса и пользователей. Разрабатываем нативные и кроссплатформенные приложения для iOS и Android, которые решают ваши задачи и привлекают клиентов</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-auto col-lg-4">
-                <div class="card-small">
-                    <div class="card-body d-flex flex-column justify-content-between p-0">
-                        <div class="row">
-                            <div class="col">
-                                <div class="card-small-header">Сайты под ключ</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="card-small-text mb-0">Создаем многостраничные сайты и интернет-магазины с интеграцией с 1С, мессенджерами </div>
+                                {% if site_settings.crm_section_image %}
+                                    <img src="{{ site_settings.crm_section_image.url }}" alt="">
+                                {% else %}
+                                    <img src="{% static 'images/vector-3.svg' %}" alt="">
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -330,6 +287,44 @@
         </div>
     </section>
 
+
+    <!-- ====== КЕЙСЫ (Главная) ====== -->
+    {% if projects %}
+    <section class="mb-5" id="кейсы">
+        <div class="row d-flex row-header mb-4">
+            <div class="col-12">
+                <div class="header-font-size">Наши реализованные проекты</div>
+            </div>
+        </div>
+        <div class="row g-3 mb-4">
+            {% for project in projects %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card project-card h-100">
+                    {% if project.thumbnail %}
+                    <img src="{{ project.thumbnail.url }}" class="card-img-top project-card-img" alt="{{ project.name }}">
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="project-card-title">{{ project.name }}</h3>
+                        {% if project.description %}
+                        <div class="project-card-desc">{{ project.description|safe|truncatewords_html:20 }}</div>
+                        {% endif %}
+                        <a href="/project/{{ project.slug }}/" class="project-card-btn mt-auto">смотреть кейс
+                            <img src="{% static 'images/arrow.svg' %}" alt="" class="ms-2">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="/project/" class="btn card-catch-button">все проекты <img class="ms-3" src="{% static 'images/arrow-1.svg' %}" alt=""></a>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ====== НАМ ДОВЕРЯЮТ ====== -->
     <section class="mb-5">
         <div class="row d-flex row-header mb-3">
             <div class="col-sm-auto">
@@ -341,35 +336,44 @@
             <div class="col-sm-auto">
                 <div class="carousel">
                     <div class="carousel-track">
-                        <div class="slide"><img src="{% static 'images/slider/1.png' %}" class="img-block" alt="icon 1"></div>
-                        <div class="slide"><img src="{% static 'images/slider/2.png' %}" class="img-block" alt="icon 2"></div>
-                        <div class="slide"><img src="{% static 'images/slider/3.png' %}" class="img-block" alt="icon 3"></div>
-                        <div class="slide"><img src="{% static 'images/slider/4.png' %}" class="img-block" alt="icon 4"></div>
-                        <div class="slide"><img src="{% static 'images/slider/5.png' %}" class="img-block" alt="icon 5"></div>
-                        <div class="slide"><img src="{% static 'images/slider/6.png' %}" class="img-block" alt="icon 6"></div>
-                        <div class="slide"><img src="{% static 'images/slider/7.png' %}" class="img-block" alt="icon 7"></div>
-                        <div class="slide"><img src="{% static 'images/slider/8.png' %}" class="img-block" alt="icon 8"></div>
-                        <div class="slide"><img src="{% static 'images/slider/9.png' %}" class="img-block" alt="icon 9"></div>
-                        <div class="slide"><img src="{% static 'images/slider/10.png' %}" class="img-block" alt="icon 10"></div>
-                        <div class="slide"><img src="{% static 'images/slider/11.png' %}" class="img-block" alt="icon 11"></div>
-                        <div class="slide"><img src="{% static 'images/slider/12.png' %}" class="img-block" alt="icon 12"></div>
+                        {% if clients %}
+                            {% for client in clients %}
+                            <div class="slide"><img src="{{ client.avatar.url }}" class="img-block" alt="{{ client.name }}"></div>
+                            {% endfor %}
+                            {% for client in clients %}
+                            <div class="slide"><img src="{{ client.avatar.url }}" class="img-block" alt="{{ client.name }}"></div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="slide"><img src="{% static 'images/slider/1.png' %}" class="img-block" alt="icon 1"></div>
+                            <div class="slide"><img src="{% static 'images/slider/2.png' %}" class="img-block" alt="icon 2"></div>
+                            <div class="slide"><img src="{% static 'images/slider/3.png' %}" class="img-block" alt="icon 3"></div>
+                            <div class="slide"><img src="{% static 'images/slider/4.png' %}" class="img-block" alt="icon 4"></div>
+                            <div class="slide"><img src="{% static 'images/slider/5.png' %}" class="img-block" alt="icon 5"></div>
+                            <div class="slide"><img src="{% static 'images/slider/6.png' %}" class="img-block" alt="icon 6"></div>
+                            <div class="slide"><img src="{% static 'images/slider/7.png' %}" class="img-block" alt="icon 7"></div>
+                            <div class="slide"><img src="{% static 'images/slider/8.png' %}" class="img-block" alt="icon 8"></div>
+                            <div class="slide"><img src="{% static 'images/slider/9.png' %}" class="img-block" alt="icon 9"></div>
+                            <div class="slide"><img src="{% static 'images/slider/10.png' %}" class="img-block" alt="icon 10"></div>
+                            <div class="slide"><img src="{% static 'images/slider/11.png' %}" class="img-block" alt="icon 11"></div>
+                            <div class="slide"><img src="{% static 'images/slider/12.png' %}" class="img-block" alt="icon 12"></div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Нам говорят спасибо -->
-    <section class="reviews">
+    <!-- ====== ОТЗЫВЫ (Грамоты) ====== -->
+    <section class="reviews" id="отзывы">
       <h2 class="section-title section-title-left">Нам говорят
         <br class="d-inline d-md-none">
         спасибо</h2>
       <div id="reviews-slider" class="splide" aria-label="Сертификаты и грамоты">
         <div class="splide__track">
           <ul class="splide__list">
-            {% for diplom in diplomas %} 
-            <li class="splide__slide reviews-slide" data-slide-index="0">
-              <img class="reviews-img" src="/media/{{diplom.avatar}}" alt="Грамота" width="320" height="420">
+            {% for diplom in diplomas %}
+            <li class="splide__slide reviews-slide" data-slide-index="{{ forloop.counter0 }}">
+              <img class="reviews-img" src="{{ diplom.avatar.url }}" alt="Грамота" width="320" height="420">
             </li>
             {% endfor %}
           </ul>
@@ -377,7 +381,7 @@
       </div>
     </section>
 
-    <!-- Fullscreen gallery modal: Bootstrap 5 Modal with synced main + thumbnail Splide -->
+    <!-- ====== ГАЛЕРЕЯ ГРАМОТ (Modal) ====== -->
     <div class="modal fade" id="reviewsGalleryModal" tabindex="-1" aria-labelledby="reviewsGalleryModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-fullscreen">
         <div class="modal-content reviews-modal-content">
@@ -389,9 +393,9 @@
             <section id="top-slider" class="splide reviews-modal-main" aria-label="Просмотр сертификата">
               <div class="splide__track">
                 <ul class="splide__list">
-                    {% for diplom in diplomas %} 
-                    <li class="splide__slide"><img class="reviews-img" src="/media/{{diplom.avatar}}" alt="Грамота" width="320" height="420"></li>
-                    {% endfor %}
+                  {% for diplom in diplomas %}
+                  <li class="splide__slide"><img class="reviews-img" src="{{ diplom.avatar.url }}" alt="Грамота" width="320" height="420"></li>
+                  {% endfor %}
                 </ul>
               </div>
             </section>
@@ -399,8 +403,8 @@
               <section id="thumbnail-slider" class="splide reviews-modal-thumbs" aria-label="Миниатюры сертификатов">
                 <div class="splide__track">
                   <ul class="splide__list">
-                    {% for diplom in diplomas %} 
-                    <li class="splide__slide"><img class="reviews-img" src="/media/{{diplom.avatar}}" alt="Грамота" width="320" height="420"></li>
+                    {% for diplom in diplomas %}
+                    <li class="splide__slide"><img class="reviews-img" src="{{ diplom.avatar.url }}" alt="Грамота" width="320" height="420"></li>
                     {% endfor %}
                   </ul>
                 </div>
@@ -411,11 +415,65 @@
       </div>
     </div>
 
+    <!-- ====== НАГРАДЫ ====== -->
+    {% if awards %}
+    <section class="mb-5" id="награды">
+        <div class="row d-flex row-header mb-4">
+            <div class="col-12">
+                <div class="header-font-size">Награды</div>
+            </div>
+        </div>
+        <div class="row g-3">
+            {% for award in awards %}
+            <div class="col-6 col-md-3">
+                <img src="{{ award.image.url }}" class="img-fluid rounded" alt="{{ award.name|default:'Награда' }}">
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ====== FULLSTACK-РАЗРАБОТКА ====== -->
+    {% if tech_stack %}
+    <section class="mb-5" id="fullstack">
+        <div class="row d-flex row-header mb-4">
+            <div class="col-12">
+                <div class="header-font-size">FULLSTACK-РАЗРАБОТКА</div>
+            </div>
+        </div>
+        <div class="row g-3">
+            {% for tech in tech_stack %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="tech-card">
+                    <div class="tech-card-left">
+                        <div class="tech-card-sight"></div>
+                        <div class="tech-card-line"></div>
+                    </div>
+                    <div class="tech-badge">
+                        <span class="tech-badge-name">{{ tech.name }}</span>
+                        {% if tech.icon %}
+                        <img class="tech-badge-icon" src="{{ tech.icon.url }}" alt="{{ tech.name }}">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ====== ОБСУДИМ ВАШ ПРОЕКТ? ====== -->
+    <div id="обсудим-проект">
+        {% with form_source="Главная страница" %}
+            {% include 'includes/contact_form.html' %}
+        {% endwith %}
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll/dist/js/splide-extension-auto-scroll.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="{% static 'js/slider.js' %}"></script>
-  <script src="{% static 'js/header-scroll.js' %}"></script>
   <script src="{% static 'js/reviews-lightbox.js' %}"></script>
-    
 {% endblock %}

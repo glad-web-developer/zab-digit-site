@@ -6,6 +6,7 @@
   var openAtIndex = 0;
   var mainSplide = null;
   var thumbSplide = null;
+  var totalSlides = reviewsSliderEl.querySelectorAll('.splide__slide').length;
 
   // ----- Main page slider: conveyor belt (drag free + autoScroll), no arrows -----
   var reviewsSplide = new Splide('#reviews-slider', {
@@ -35,12 +36,17 @@
     } else {
       openAtIndex = slide.index;
     }
-    openAtIndex = Math.max(0, Math.min(openAtIndex, 5));
+    openAtIndex = Math.max(0, Math.min(openAtIndex, totalSlides - 1));
     var modal = bootstrap.Modal.getOrCreateInstance(modalEl);
     modal.show();
   });
 
-  reviewsSplide.mount(window.splide && window.splide.Extensions ? window.splide.Extensions : {});
+  // Безопасный mount — AutoScroll подключаем только если расширение загружено
+  var extensions = {};
+  if (typeof SplideAutoScroll !== 'undefined') {
+    extensions.AutoScroll = SplideAutoScroll;
+  }
+  reviewsSplide.mount(extensions);
 
   // ----- Bootstrap modal: init/destroy Splide on show/hide -----
   modalEl.addEventListener('shown.bs.modal', function () {
@@ -85,7 +91,7 @@
     }
   });
 
-  // Optional: keyboard prev/next inside modal
+  // Keyboard prev/next inside modal
   document.addEventListener('keydown', function (e) {
     if (!modalEl.classList.contains('show') || !mainSplide) return;
     if (e.key === 'ArrowLeft') {
