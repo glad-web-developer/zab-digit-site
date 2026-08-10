@@ -306,7 +306,7 @@
                     <div class="card-body d-flex flex-column">
                         <h3 class="project-card-title">{{ project.name }}</h3>
                         {% if project.description %}
-                        <div class="project-card-desc">{{ project.description|safe|truncatewords_html:20 }}</div>
+                        <div class="project-card-desc">{{ project.description|striptags|truncatewords:20 }}</div>
                         {% endif %}
                         <a href="/project/{{ project.slug }}/" class="project-card-btn mt-auto">смотреть кейс
                             <img src="{% static 'images/arrow.svg' %}" alt="" class="ms-2">
@@ -463,11 +463,9 @@
     {% endif %}
 
     <!-- ====== ОБСУДИМ ВАШ ПРОЕКТ? ====== -->
-    <div id="обсудим-проект">
-        {% with form_source="Главная страница" %}
-            {% include 'includes/contact_form.html' %}
-        {% endwith %}
-    </div>
+    {% with form_source="Главная страница" %}
+        {% include 'includes/contact_form.html' %}
+    {% endwith %}
 
 {% endblock %}
 
