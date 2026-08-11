@@ -1,6 +1,7 @@
 import mimetypes
 import os
 import re
+import ssl
 import time
 from html import unescape
 from urllib.error import HTTPError, URLError
@@ -240,18 +241,46 @@ class Command(BaseCommand):
         ))
 
     def fetch_text(self, url):
+        """Загрузка HTML с игнорированием SSL ошибок (для разработки)"""
         time.sleep(REQUEST_PAUSE)
         request = Request(url, headers={'User-Agent': USER_AGENT})
-        with urlopen(request, timeout=60) as response:
-            charset = response.headers.get_content_charset() or 'utf-8'
-            return response.read().decode(charset, errors='replace')
+
+        # Создаем SSL контекст, который не проверяет сертификаты
+        # ВНИМАНИЕ: Только для разработки! Для продакшена используйте сертификаты
+        ssl_context = ssl.create_default_context()
+        ssl_context.check_hostname = False
+        ssl_context.verify_mode = ssl.CERT_NONE
+
+        try:
+            with urlopen(request, timeout=60, context=ssl_context) as response:
+                charset = response.headers.get_content_charset() or 'utf-8'
+                return response.read().decode(charset, errors='replace')
+        except URLError as e:
+            self.stderr.write(
+                self.style.ERROR(f'Ошибка при загрузке {url}: {e}')
+            )
+            raise
 
     def fetch_bytes(self, url):
+        """Загрузка бинарных данных с игнорированием SSL ошибок (для разработки)"""
         time.sleep(REQUEST_PAUSE)
         request = Request(url, headers={'User-Agent': USER_AGENT})
-        with urlopen(request, timeout=60) as response:
-            content_type = response.headers.get_content_type()
-            return response.read(), content_type
+
+        # Создаем SSL контекст, который не проверяет сертификаты
+        # ВНИМАНИЕ: Только для разработки! Для продакшена используйте сертификаты
+        ssl_context = ssl.create_default_context()
+        ssl_context.check_hostname = False
+        ssl_context.verify_mode = ssl.CERT_NONE
+
+        try:
+            with urlopen(request, timeout=60, context=ssl_context) as response:
+                content_type = response.headers.get_content_type()
+                return response.read(), content_type
+        except URLError as e:
+            self.stderr.write(
+                self.style.ERROR(f'Ошибка при загрузке {url}: {e}')
+            )
+            raise
 
     def fetch_detail(self, slug):
         url = f'{BASE_URL}/project/{slug}/'
@@ -346,16 +375,16 @@ class Command(BaseCommand):
 
     @transaction.atomic
     def save_project(
-        self,
-        *,
-        slug,
-        name,
-        description,
-        category,
-        show_in_main,
-        order_index,
-        thumbnail_url,
-        screenshot_urls,
+            self,
+            *,
+            slug,
+            name,
+            description,
+            category,
+            show_in_main,
+            order_index,
+            thumbnail_url,
+            screenshot_urls,
     ):
         project = Project.objects.create(
             name=name[:255],
