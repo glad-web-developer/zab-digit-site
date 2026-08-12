@@ -1184,10 +1184,10 @@ textarea.contact-form-input {
   display: flex;
   align-items: center;
   background: #F5F5F5;
-  border: 2.5px solid #0F0006;
-  border-radius: 60px;
+  box-shadow: -4px 5px 0px 0px #0F0006;
+  border-radius: 30px;
   padding: 0 10px 0 20px;
-  height: 72px;
+  min-height: 120px;
   gap: 0;
 }
 
@@ -1241,24 +1241,24 @@ textarea.contact-form-input {
   align-items: center;
   gap: 8px;
   background: #CC0047;
-  border-radius: 40px;
-  padding: 8px 16px;
+  border-radius: 30px;
+  padding: 10px 25px;
   flex-shrink: 0;
-  min-width: 0;
+  min-width: 150px;
+  justify-content: center;
 }
 .tech-badge-name {
   color: #F5F5F5;
   font-size: 14px;
-  font-weight: 600;
   white-space: nowrap;
   line-height: 1;
 }
 .tech-badge-icon {
+  margin-left: 3px;
   width: 24px;
   height: 24px;
   object-fit: contain;
   flex-shrink: 0;
-  border-radius: 3px;
 }
 
 @media (max-width: 768px) {
