@@ -331,19 +331,19 @@
             <div class="row g-3 mb-4">
                 {% for project in projects %}
                     <div class="col-12 col-md-6 col-lg-6">
-                        <div class="card p-4 project-card h-100">
+                        <div class="card p-2 p-md-3 project-card h-100">
                             {% if project.thumbnail %}
                                 <img src="{{ project.thumbnail.url }}" class="card-img-top project-card-img"
                                      alt="{{ project.name }}">
                             {% endif %}
                             <div class="card-body  d-flex flex-column">
-                                <h3 class="project-card-title">{{ project.name }}</h3>
+                                <h3 class="project-card-title text-uppercase">{{ project.name }}</h3>
                                 {% if project.description %}
                                     <div class="project-card-desc">
                                         {{ project.description|striptags|truncatewords:20 }}</div>
                                 {% endif %}
                             <div class="d-inline-block">
-                                <a href="/project/{{ project.slug }}/" class="project-card-btn btn py-3 px-5 mt-auto">смотреть кейс
+                                <a href="/project/{{ project.slug }}/" class="project-card-btn btn py-3 px-3 px-md-5 mt-auto">смотреть кейс
                                     <img src="{% static 'images/arrow.svg' %}" alt="" class="ms-3">
                                 </a>
                             </div></div>

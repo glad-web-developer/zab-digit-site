@@ -51,7 +51,11 @@
 body {
     font-family: var(--font-body);
     color: var(--color-text);
-    background-color: var(--color-bg);
+      background-image: url('../images/fon-project.png');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    background-attachment: scroll;
 }
 
 /* Заголовки — шрифт Strong */
@@ -1105,7 +1109,7 @@ h1, h2, h3, h4, h5, h6 {
 .project-card-title {
     color: #0F0006;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 8px;
 }
 
@@ -1400,6 +1404,257 @@ textarea.contact-form-input {
 
     .tech-badge {
         padding: 6px 12px;
+    }
+}
+
+/* ==========================================
+   ЗАГОЛОВОК СТРАНИЦЫ ПРОЕКТОВ
+   ========================================== */
+
+.projects-header {
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 60px;
+}
+
+.projects-header-inner {
+    max-width: 1268px;
+    margin: 0 auto;
+}
+
+.projects-title-row {
+    position: relative;
+    min-height: 230px;
+}
+
+.projects-title {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Strong', sans-serif;
+    font-size: 100px;
+    font-weight: 400;
+    line-height: 0.99;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: #120008;
+}
+
+.projects-title span {
+    display: block;
+}
+
+.projects-header-description {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.35;
+    color: #1d1518;
+}
+
+
+/* ==========================================
+   ФИЛЬТРЫ
+   ========================================== */
+
+.project-filter {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    margin-top: 25px;
+}
+
+.project-filter-btn {
+    min-width: 190px;
+    height: 66px;
+
+    padding: 0 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 35px;
+
+    background: #f8f8f8;
+    color: #171115;
+
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    text-decoration: none;
+
+    transition:
+        background-color .2s ease,
+        color .2s ease;
+}
+
+.project-filter-btn:hover {
+    background: #d5004b;
+    color: #fff;
+}
+
+.project-filter-btn-active {
+    background: #d5004b;
+    color: #fff;
+}
+
+
+/* ==========================================
+   1200–1399
+   ========================================== */
+@media (min-width: 1400px) {
+
+    .projects-header-description {
+    left: 35%;
+    bottom: 40px;
+
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+
+    .projects-header-inner {
+        max-width: calc(100% - 140px);
+    }
+
+    .projects-title {
+        font-size: 85px;
+    }
+
+    .projects-title-row {
+        min-height: 200px;
+    }
+
+    .projects-header-description {
+        left: 38%;
+    }
+}
+
+
+/* ==========================================
+   992–1199
+   ========================================== */
+
+@media (min-width: 978px) and (max-width: 1199px) {
+
+    .projects-header {
+        margin-top: 80px;
+    }
+
+    .projects-header-inner {
+        max-width: calc(100% - 80px);
+    }
+
+    .projects-title {
+        font-size: 70px;
+    }
+
+    .projects-title-row {
+        min-height: 180px;
+    }
+
+    .projects-header-description {
+        left: 32%;
+        bottom: 40px;
+    }
+
+    .project-filter {
+        gap: 16px;
+    }
+
+    .project-filter-btn {
+        min-width: 160px;
+        height: 60px;
+        padding: 0 20px;
+    }
+}
+
+
+/* ==========================================
+   МОБИЛЬНЫЕ
+   ========================================== */
+
+@media (max-width: 767px) {
+
+    .projects-header {
+        margin-top: 55px;
+        margin-bottom: 40px;
+    }
+
+    .projects-header-inner {
+        width: calc(100% - 24px);
+        margin: 0 12px;
+    }
+
+    .projects-title-row {
+        min-height: auto;
+    }
+
+    .projects-title {
+        font-size: 32px;
+        line-height: 1;
+        letter-spacing: 0;
+    }
+
+    .projects-title span {
+        display: block;
+    }
+
+    .projects-header-description {
+        position: static;
+
+        margin-top: 24px;
+
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .project-filter {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+
+        margin-top: 40px;
+    }
+
+    .project-filter-btn {
+        min-width: 0;
+        width: 100%;
+        height: 45px;
+
+        padding: 0 12px;
+
+        font-size: 15px;
+        white-space: nowrap;
+    }
+}
+
+
+/* ==========================================
+   ОЧЕНЬ УЗКИЕ ЭКРАНЫ
+   ========================================== */
+
+@media (max-width: 380px) {
+
+    .projects-title {
+        font-size: 30px;
+    }
+
+    .projects-header-description {
+        font-size: 15px;
+    }
+
+    .project-filter {
+        gap: 16px 20px;
+    }
+
+    .project-filter-btn {
+        font-size: 14px;
     }
 }
 
