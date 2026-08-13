@@ -471,6 +471,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-btn:hover {
     color: var(--color-white);
     opacity: 0.9;
+    background: #CC0047;
 }
 
 @media (max-width: 767px) {
@@ -971,6 +972,12 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     line-height: 1;
     vertical-align: middle;
+
+    &:hover {
+        background: #CC0047;
+        color: white;
+        opacity: 0.7;
+    }
 }
 
 /* ====== Лого в футере — белое+красное ====== */
