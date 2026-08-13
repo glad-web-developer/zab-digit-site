@@ -12,7 +12,7 @@ def render_home(request):
     diplomas = Diploma.objects.all().order_by('order_index')
     awards = Award.objects.all().order_by('order_index')
     clients = Client.objects.all().order_by('order_index')
-    projects_main = Project.objects.filter(show_in_main=True).order_by('-order_index')
+    projects_main = Project.objects.filter(show_in_main=True).order_by('-order_index')[0:6]
     site_settings = SiteSettings.load()
     tech_stack = TechStack.objects.all()
     return render(request, 'home.html', {

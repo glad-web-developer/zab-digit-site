@@ -330,22 +330,23 @@
             </div>
             <div class="row g-3 mb-4">
                 {% for project in projects %}
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card project-card h-100">
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <div class="card p-4 project-card h-100">
                             {% if project.thumbnail %}
                                 <img src="{{ project.thumbnail.url }}" class="card-img-top project-card-img"
                                      alt="{{ project.name }}">
                             {% endif %}
-                            <div class="card-body d-flex flex-column">
+                            <div class="card-body  d-flex flex-column">
                                 <h3 class="project-card-title">{{ project.name }}</h3>
                                 {% if project.description %}
                                     <div class="project-card-desc">
                                         {{ project.description|striptags|truncatewords:20 }}</div>
                                 {% endif %}
-                                <a href="/project/{{ project.slug }}/" class="project-card-btn mt-auto">смотреть кейс
-                                    <img src="{% static 'images/arrow.svg' %}" alt="" class="ms-2">
+                            <div class="d-inline-block">
+                                <a href="/project/{{ project.slug }}/" class="project-card-btn btn py-3 px-5 mt-auto">смотреть кейс
+                                    <img src="{% static 'images/arrow.svg' %}" alt="" class="ms-3">
                                 </a>
-                            </div>
+                            </div></div>
                         </div>
                     </div>
                 {% endfor %}
@@ -471,23 +472,64 @@
         </div>
     </div>
 
-    <!-- ====== НАГРАДЫ ====== -->
     {% if awards %}
-        <section class="mb-5" id="награды">
-            <div class="row d-flex row-header mb-4">
-                <div class="col-12">
-                    <div class="header-font-size">Награды</div>
+        <!-- ====== ПАТЕНТЫ ====== -->
+        <section class="awards" id="награды">
+            <h2 class="section-title section-title-left">Наши патенты
+            </h2>
+            <div id="awards-slider" class="awards splide" aria-label="Патенты">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for award in awards %}
+                            <li class="splide__slide awards-slide" data-slide-index="{{ forloop.counter0 }}">
+                                <img class="awards-img" src="{{ award.image.url }}" alt="Патент" width="320"
+                                     height="420">
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
-            <div class="row g-3">
-                {% for award in awards %}
-                    <div class="col-6 col-md-3">
-                        <img src="{{ award.image.url }}" class="img-fluid rounded"
-                             alt="{{ award.name|default:'Награда' }}">
-                    </div>
-                {% endfor %}
-            </div>
         </section>
+
+        <!-- ====== ГАЛЕРЕЯ ПАТЕНТОВ (Modal) ====== -->
+        <div class="modal fade" id="awardsGalleryModal" tabindex="-1" aria-labelledby="awardsGalleryModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content awards-modal-content">
+                    <div class="modal-header awards-modal-header">
+                        <h2 class="modal-title visually-hidden" id="awardsGalleryModalLabel">Галерея патентов</h2>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body awards-modal-body">
+                        <section id="top-slider-award" class="splide awards-modal-main" aria-label="Просмотр патента">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    {% for award in awards %}
+                                        <li class="splide__slide"><img class="awards-img" src="{{ award.image.url }}"
+                                                                       alt="Патент" width="320" height="420"></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </section>
+                        <div class="awards-modal-thumbs-wrapper">
+                            <section id="thumbnail-slider-award" class="splide awards-modal-thumbs"
+                                     aria-label="Миниатюры патентов">
+                                <div class="splide__track">
+                                    <ul class="splide__list">
+                                        {% for award in awards %}
+                                            <li class="splide__slide"><img class="awards-img"
+                                                                           src="{{ award.image.url }}"
+                                                                           alt="Патент" width="320" height="420"></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% endif %}
 
     <!-- ====== FULLSTACK-РАЗРАБОТКА ====== -->
@@ -530,4 +572,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll/dist/js/splide-extension-auto-scroll.min.js"></script>
     <script src="{% static 'js/slider.js' %}"></script>
     <script src="{% static 'js/reviews-lightbox.js' %}"></script>
+    <script src="{% static 'js/awards-lightbox.js' %}"></script>
 {% endblock %}
