@@ -1902,3 +1902,150 @@ textarea.contact-form-input {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+/* =========================
+   COOKIE BANNER
+   ========================= */
+
+.cookie-banner {
+    position: fixed;
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+    z-index: 10000;
+
+    background: #fff;
+    max-width: 800px;
+    border-radius: 18px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+
+    padding: 20px 24px;
+
+    animation: cookieBannerShow 0.35s ease;
+}
+
+.cookie-banner[hidden] {
+    display: none;
+}
+
+.cookie-banner__content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.cookie-banner__text {
+    flex: 1;
+}
+
+.cookie-banner__title {
+    margin-bottom: 6px;
+
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f1f1f;
+}
+
+.cookie-banner__description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666;
+}
+
+.cookie-banner__description a {
+    color: #CC0047;
+    text-decoration: underline;
+}
+
+.cookie-banner__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.cookie-banner__btn {
+    border: none;
+    border-radius: 30px;
+
+    padding: 11px 22px;
+
+    font-size: 14px;
+    font-family: inherit;
+
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cookie-banner__btn:hover {
+    opacity: 0.85;
+}
+
+.cookie-banner__btn:active {
+    transform: scale(0.97);
+}
+
+.cookie-banner__btn--reject {
+    background: #f1f1f1;
+    color: #333;
+}
+
+.cookie-banner__btn--accept {
+    background: #CC0047;
+    color: #fff;
+}
+
+@keyframes cookieBannerShow {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Мобильная версия */
+
+@media (max-width: 767px) {
+    .cookie-banner {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .cookie-banner__content {
+        display: block;
+    }
+
+    .cookie-banner__title {
+        font-size: 17px;
+    }
+
+    .cookie-banner__description {
+        font-size: 13px;
+    }
+
+    .cookie-banner__actions {
+        margin-top: 16px;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cookie-banner__btn {
+        width: 100%;
+        padding: 10px 15px;
+    }
+}

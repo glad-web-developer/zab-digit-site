@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/style-2.css' %}">
 </head>
 <body class="page">
+{% include 'includes/cookie.html' %}
 
   <!-- ====== HEADER ====== -->
   <header class="navbar navbar-expand-lg header">
@@ -205,6 +206,44 @@
     });
   })();
   </script>
+
+<script>
+(function () {
+    var COOKIE_KEY = 'cookie_consent';
+    var banner = document.getElementById('cookieBanner');
+
+    if (!banner) return;
+
+    var savedConsent = localStorage.getItem(COOKIE_KEY);
+
+    // Если пользователь уже сделал выбор — баннер не показываем
+    if (!savedConsent) {
+        banner.hidden = false;
+    }
+
+    var acceptButton = document.getElementById('cookieAccept');
+    var rejectButton = document.getElementById('cookieReject');
+
+    function saveConsent(value) {
+        localStorage.setItem(COOKIE_KEY, value);
+
+        banner.style.opacity = '0';
+        banner.style.transform = 'translateY(20px)';
+
+        setTimeout(function () {
+            banner.hidden = true;
+        }, 250);
+    }
+
+    acceptButton.addEventListener('click', function () {
+        saveConsent('accepted');
+    });
+
+    rejectButton.addEventListener('click', function () {
+        saveConsent('rejected');
+    });
+})();
+</script>
 
 </body>
 </html>
