@@ -28,7 +28,7 @@ def render_project_dv(request, slug_or_id):
         except Exception:
             return render(request, '404.html', {}, status=404)
 
-    gallery = project.images.all().order_by('order_index')
+    gallery = project.images.all().order_by('-order_index')
     return render(request, 'project/project_dv.html', {
         'project': project,
         'gallery': gallery,

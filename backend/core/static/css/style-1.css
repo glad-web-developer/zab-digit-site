@@ -51,7 +51,7 @@
 body {
     font-family: var(--font-body);
     color: var(--color-text);
-      background-image: url('../images/fon-project.png');
+    background-image: url('../images/fon-project.png');
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
@@ -1181,7 +1181,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-breadcrumb-link {
-    color: rgba(15, 0, 6, 0.5);
+    color: #0F0006;
     text-decoration: none;
     font-size: 14px;
     transition: color 0.2s;
@@ -1192,11 +1192,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-    color: rgba(15, 0, 6, 0.35);
+    content: "";
+    width: 40px;
+    height: 100%;
+
+    display: inline-block;
+    margin: 0 10px;
+
+    background: url("../images/Arrow2.svg") center / contain no-repeat;
+
+    vertical-align: middle;
+    color: transparent;
 }
 
 .breadcrumb-item.active {
-    color: #0F0006;
+    color: #CC0047 !important;
     font-size: 14px;
 }
 
@@ -1207,7 +1217,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-dv-description {
-    color: #F5F5F5;
+    color: #0F0006;
     font-size: 16px;
     line-height: 1.6;
 }
@@ -1281,23 +1291,257 @@ textarea.contact-form-input {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.25s ease;
+    border-radius: 30px;
 }
 
-.project-gallery-link:hover .project-gallery-img {
-    transform: scale(1.04);
+.project-gallery-text {
+    position: relative;
+    height: 100%;
+    min-height: 420px;
+    padding: 250px 30px 30px;
+
+    display: flex;
+    align-items: flex-end;
+
+    background: #292929;
+    color: #fff;
+
+    border-radius: 24px;
+    border-left: 3px solid #d5004f;
+    border-bottom: 3px solid #d5004f;
+
+    overflow: hidden;
 }
 
-.project-gallery-caption {
+/* Декоративная пунктирная линия */
+.project-gallery-text::before {
+    content: "";
     position: absolute;
-    bottom: 0;
+    left: 30px;
+    bottom: 190px;
+
+    width: 115px;
+    height: 1px;
+
+    background: repeating-linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.7) 0,
+            rgba(255, 255, 255, 0.7) 8px,
+            transparent 8px,
+            transparent 16px
+    );
+}
+
+/* Точка справа от линии */
+.project-gallery-text::after {
+    content: "";
+    position: absolute;
+    left: 142px;
+    bottom: 188px;
+
+    width: 5px;
+    height: 5px;
+
+    background: #fff;
+    border-radius: 50%;
+}
+
+/* Текст */
+
+.project-gallery-text {
+    font-size: 24px;
+    line-height: 1.08;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+/* Планшет */
+@media (max-width: 991.98px) {
+    .project-gallery-text {
+        min-height: 350px;
+        padding: 200px 25px 25px;
+        font-size: 21px;
+    }
+
+    .project-gallery-text::before {
+        left: 25px;
+        bottom: 160px;
+    }
+
+    .project-gallery-text::after {
+        left: 137px;
+        bottom: 158px;
+    }
+}
+
+/* Телефон */
+@media (max-width: 767.98px) {
+    .project-gallery-text {
+        min-height: 300px;
+        padding: 170px 24px 24px;
+        border-radius: 20px;
+
+        font-size: 20px;
+    }
+
+    .project-gallery-text::before {
+        left: 24px;
+        bottom: 135px;
+        width: 100px;
+    }
+
+    .project-gallery-text::after {
+        left: 121px;
+        bottom: 133px;
+    }
+}
+
+.project-problem-section {
+    width: 100%;
+    position: relative;
+}
+
+/* Основная карточка */
+.project-problem-card {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 30% 1fr 170px;
+    align-items: start;
+
+    min-height: 195px;
+    padding: 30px 30px 35px;
+
+    background: #F5F5F5;
+    border-radius: 30px;
+
+    overflow: hidden;
+    box-shadow: -4px 5px 0px 0px #0F0006;
+
+}
+
+
+/* Заголовок слева */
+.project-problem-title {
+    font-size: 30px;
+    line-height: 1.02;
+    font-weight: 400;
+    color: #0F0006;
+}
+
+/* Описание из description_problem */
+.project-problem-description {
+    font-size: 16px;
+    line-height: 1.35;
+    color: #0F0006;
+}
+
+
+/* Декоративная область справа */
+.project-problem-decoration {
+    position: relative;
+    width: 140px;
+    height: 100%;
+}
+
+/* Пунктирная горизонтальная линия */
+.project-problem-decoration::before {
+    content: "";
+    position: absolute;
+    left: 42px;
+    top: 85%;
+    width: 100px;
+    height: 1px;
+
+    background: repeating-linear-gradient(
+            to right,
+            #777 0,
+            #777 10px,
+            transparent 10px,
+            transparent 18px
+    );
+}
+
+/* Круг */
+.project-problem-decoration::after {
+    content: "";
+    position: absolute;
     left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.55);
-    color: #F5F5F5;
-    font-size: 12px;
-    padding: 6px 10px;
-    text-align: center;
+    top: calc(85% - 20px);
+    width: 40px;
+    height: 40px;
+    border: 1px dashed #777;
+    border-radius: 50%;
+}
+
+/* Точка внутри круга */
+.project-problem-decoration span {
+    position: absolute;
+    left: 19px;
+    top: calc(85% - 1px);
+    width: 4px;
+    height: 4px;
+    background: #777;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (max-width: 991.98px) {
+
+    .project-problem-card {
+        grid-template-columns: 35% 1fr 100px;
+        min-height: 220px;
+        padding: 25px;
+    }
+
+    .project-problem-title {
+        font-size: 25px;
+    }
+
+    .project-problem-description {
+        font-size: 13px;
+        padding: 0 15px;
+    }
+
+    .project-problem-decoration {
+        transform: scale(0.8);
+        transform-origin: right center;
+    }
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 767.98px) {
+
+    .project-problem-card {
+        display: block;
+        min-height: auto;
+        padding: 30px 25px 35px;
+    }
+
+    .project-problem-title {
+        margin-bottom: 25px;
+        font-size: 25px;
+        line-height: 1.05;
+    }
+
+    .project-problem-description {
+        padding: 0;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .project-problem-decoration {
+        display: none;
+    }
 }
 
 /* ====== FULLSTACK-РАЗРАБОТКА ====== */
@@ -1488,9 +1732,8 @@ textarea.contact-form-input {
     line-height: 1;
     text-decoration: none;
 
-    transition:
-        background-color .2s ease,
-        color .2s ease;
+    transition: background-color .2s ease,
+    color .2s ease;
 }
 
 .project-filter-btn:hover {
@@ -1510,8 +1753,8 @@ textarea.contact-form-input {
 @media (min-width: 1400px) {
 
     .projects-header-description {
-    left: 35%;
-    bottom: 40px;
+        left: 35%;
+        bottom: 40px;
 
     }
 }
