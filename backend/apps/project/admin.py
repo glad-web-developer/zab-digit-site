@@ -8,7 +8,7 @@ from .models import Project, ProjectImage
 class ProjectImageInline(admin.TabularInline):
     model = ProjectImage
     extra = 1
-    fields = ['image', 'caption', 'order_index', 'preview']
+    fields = ['image', 'caption', 'order_index', 'category', 'preview']
     readonly_fields = ['preview']
 
     def preview(self, obj):
@@ -39,6 +39,10 @@ class ProjectAdmin(ImportExportModelAdmin):
         }),
         ('Описание', {
             'fields': ('description',),
+            'description': 'Поддерживает форматирование (жирный, списки, заголовки)'
+        }),
+        ('Описание для блока Решение проблем', {
+            'fields': ('description_problem',),
             'description': 'Поддерживает форматирование (жирный, списки, заголовки)'
         }),
     )

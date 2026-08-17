@@ -8,6 +8,12 @@ CATEGORY_CHOICES = [
     ('site', 'Сайты'),
 ]
 
+VIEW_CHOICES = [
+    ('text', 'С текстом'),
+    ('big', 'Большое фото'),
+    ('small', 'Фото на пол экрана'),
+]
+
 
 class Project(models.Model):
     class Meta:
@@ -19,6 +25,7 @@ class Project(models.Model):
     slug = models.SlugField(verbose_name='URL', unique=True, max_length=255,
                             null=True, blank=True)
     description = RichTextField('Описание', null=True, blank=True)
+    description_problem = RichTextField('Описание для блока Решение проблем', null=True, blank=True)
     thumbnail = models.ImageField('Превью-изображение', upload_to='project/thumbnails/',
                                   null=True, blank=True)
     category = models.CharField('Категория', max_length=20, choices=CATEGORY_CHOICES,
@@ -44,6 +51,7 @@ class ProjectImage(models.Model):
     image = models.ImageField('Фото', upload_to='project/gallery/')
     caption = models.CharField('Подпись к фото', max_length=255, blank=True)
     order_index = models.IntegerField('Порядок', default=0)
+    category = models.CharField('Тип вывода', max_length=20, choices=VIEW_CHOICES, default='big')
 
     def __str__(self):
         return f'Фото #{self.pk} — {self.project}'
