@@ -143,6 +143,8 @@
 <!-- ====== SCRIPTS ====== -->
 <script src="{% static 'bootstrap-5.3.0-dist/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'js/header-scroll.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5/dist/js/splide-extension-auto-scroll.min.js"></script>
 {% block extra_js %}{% endblock %}
 
 <!-- Копирование телефона в буфер -->
@@ -288,48 +290,124 @@
 
 {#скролл с учетом шапки#}
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const header = document.querySelector('.header');
+document.addEventListener('DOMContentLoaded', function () {
+    const header = document.querySelector('.header');
 
-        document.querySelectorAll('a[href*="#"]').forEach(link => {
-            link.addEventListener('click', function (e) {
-                const url = new URL(this.href, window.location.origin);
+    // Все ссылки с якорями
+    const links = document.querySelectorAll(
+        '.menu-link[href*="#"], .menu-list-link[href*="#"]'
+    );
 
-                // Работаем только с якорями на текущей странице
-                if (
-                    url.pathname !== window.location.pathname ||
-                    !url.hash
-                ) {
-                    return;
+    if (!links.length) return;
+
+    function getId(link) {
+        const url = new URL(link.href, window.location.origin);
+
+        if (url.pathname !== window.location.pathname || !url.hash) {
+            return null;
+        }
+
+        return decodeURIComponent(url.hash.substring(1));
+    }
+
+    function updateActiveLink() {
+        const headerHeight = header
+            ? header.getBoundingClientRect().height + 100
+            : 0;
+
+        let activeId = null;
+        let closestTop = -Infinity;
+
+        links.forEach(link => {
+            const id = getId(link);
+            if (!id) return;
+
+            const section = document.getElementById(id);
+            if (!section) return;
+
+            const top = section.getBoundingClientRect().top;
+
+            // Блок уже дошёл до шапки
+            if (top <= headerHeight && top > closestTop) {
+                closestTop = top;
+                activeId = id;
+            }
+        });
+
+        // Убираем подсветку у всех
+        links.forEach(link => {
+            link.classList.remove(
+                'menu-link-active',
+                'menu-list-link-active'
+            );
+        });
+
+        // Подсвечиваем нужную
+        if (activeId) {
+            links.forEach(link => {
+                if (getId(link) === activeId) {
+                    if (link.classList.contains('menu-link')) {
+                        link.classList.add('menu-link-active');
+                    }
+
+                    if (link.classList.contains('menu-list-link')) {
+                        link.classList.add('menu-list-link-active');
+                    }
                 }
-
-                const target = document.getElementById(
-                    decodeURIComponent(url.hash.substring(1))
-                );
-
-                if (!target) return;
-
-                e.preventDefault();
-
-                const headerHeight = header
-                    ? header.getBoundingClientRect().height
-                    : 0;
-
-                const targetPosition =
-                    target.getBoundingClientRect().top +
-                    window.scrollY -
-                    headerHeight - 20;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-
-                // Обновляем URL без резкого перехода браузера
-                history.pushState(null, '', url.hash);
             });
+        }
+    }
+
+    // Переход по якорю с учётом шапки
+    links.forEach(link => {
+        link.addEventListener('click', function (e) {
+            const url = new URL(this.href, window.location.origin);
+
+            if (
+                url.pathname !== window.location.pathname ||
+                !url.hash
+            ) {
+                return;
+            }
+
+            const target = document.getElementById(
+                decodeURIComponent(url.hash.substring(1))
+            );
+
+            if (!target) return;
+
+            e.preventDefault();
+
+            const headerHeight = header
+                ? header.getBoundingClientRect().height
+                : 0;
+
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.scrollY -
+                headerHeight - 80;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+
+            history.pushState(null, '', url.hash);
+
+            setTimeout(updateActiveLink, 300);
         });
     });
+
+    // Подсветка при скролле
+    window.addEventListener('scroll', updateActiveLink, {
+        passive: true
+    });
+
+    window.addEventListener('resize', updateActiveLink);
+
+    // При загрузке страницы
+    updateActiveLink();
+});
 </script>
 </body>
 </html>

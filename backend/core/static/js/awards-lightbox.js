@@ -1,218 +1,129 @@
 (function () {
-    var awardsSliderEl = document.getElementById('awards-slider');
-    var modalEl = document.getElementById('awardsGalleryModal');
+  var awardsSliderEl = document.getElementById('awards-slider');
+  var modalEl = document.getElementById('awardsGalleryModal');
+  if (!awardsSliderEl || !modalEl || typeof Splide === 'undefined' || typeof bootstrap === 'undefined') return;
 
-    if (
-        !awardsSliderEl ||
-        !modalEl ||
-        typeof Splide === 'undefined' ||
-        typeof bootstrap === 'undefined'
-    ) {
-        return;
-    }
+  var openAtIndex = 0;
+  var mainSplide = null;
+  var thumbSplide = null;
+  var totalSlides = awardsSliderEl.querySelectorAll('.splide__slide').length;
 
-    var openAtIndex = 0;
-    var mainSplide = null;
-    var thumbSplide = null;
-
-    var slides = awardsSliderEl.querySelectorAll('.splide__slide');
-    var totalSlides = slides.length;
-
-    // =========================================================
-    // ОСНОВНОЙ СЛАЙДЕР ПАТЕНТОВ
-    // =========================================================
-
-    var awardsSplide = new Splide(awardsSliderEl, {
+    var awardsSplide = new Splide('#awards-slider', {
         type: 'loop',
         drag: 'free',
         perPage: 4,
         gap: '1.25rem',
-        padding: {
-            left: '0',
-            right: '0'
-        },
+        padding: {left: '0', right: '0'},
         arrows: false,
         pagination: false,
         focus: 0,
-
         autoScroll: {
-            speed: 0.25,
-            pauseOnHover: false
+            speed: 2.0,
+            delay: 0,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+            waitForTransition: true
         },
-
         breakpoints: {
-            768: {
-                perPage: 1.5
-            }
+            768: {perPage: 1.5}
         }
     });
 
-    // Открываем модальное окно по клику
     awardsSplide.on('click', function (slide) {
-        if (!slide || !slide.slide) {
-            return;
-        }
-
-        var idx = slide.slide.getAttribute('data-slide-index');
-
-        if (idx !== null) {
+        var slideEl = slide.slide;
+        var idx = slideEl.getAttribute('data-slide-index');
+        if (idx !== null && idx !== undefined) {
             openAtIndex = parseInt(idx, 10);
-
-            if (isNaN(openAtIndex)) {
-                openAtIndex = 0;
-            }
+            if (isNaN(openAtIndex)) openAtIndex = 0;
         } else {
-            openAtIndex = slide.index || 0;
+            openAtIndex = slide.index;
         }
-
-        if (totalSlides > 0) {
-            openAtIndex = Math.max(
-                0,
-                Math.min(openAtIndex, totalSlides - 1)
-            );
-        }
-
+        openAtIndex = Math.max(0, Math.min(openAtIndex, totalSlides - 1));
         var modal = bootstrap.Modal.getOrCreateInstance(modalEl);
         modal.show();
     });
 
-    // Подключаем AutoScroll только если расширение действительно загружено
-    var extensions = {};
 
-    if (typeof SplideAutoScroll !== 'undefined') {
+    var extensions = {};
+    var autoScrollLoaded = typeof SplideAutoScroll !== 'undefined';
+    if (autoScrollLoaded) {
         extensions.AutoScroll = SplideAutoScroll;
+    } else {
+        console.warn('SplideAutoScroll not loaded – будет использован запасной скролл.');
     }
 
     awardsSplide.mount(extensions);
 
+    // ===== ЗАПУСК АВТОПРОКРУТКИ =====
+    if (autoScrollLoaded) {
+        // Если расширение загружено – используем его
+        setTimeout(function () {
+            awardsSplide.play();
+        }, 50);
+    } else {
+        // Запасной вариант: плавная прокрутка через setInterval
+        var intervalId = setInterval(function () {
+            awardsSplide.go('+1');
+        }, 2000); // каждые 2.5 сек
+        // Останавливаем интервал, когда пользователь взаимодействует со слайдером
+        awardsSplide.on('drag', function () {
+            clearInterval(intervalId);
+        });
+        // Можно перезапустить после окончания перетаскивания (опционально)
+    }
 
-    // =========================================================
-    // MODAL
-    // =========================================================
-
+    // ===== Модальное окно: инициализация слайдеров =====
     modalEl.addEventListener('shown.bs.modal', function () {
+        var mainEl = document.getElementById('top-slider');
+        var thumbEl = document.getElementById('thumbnail-slider');
+        if (!mainEl || !thumbEl) return;
 
-        var mainEl = document.getElementById('top-slider-award');
-        var thumbEl = document.getElementById('thumbnail-slider-award');
-
-        if (!mainEl || !thumbEl) {
-            console.error('[awards] Не найдены #top-slider-award или #thumbnail-slider-award');
-            return;
-        }
-
-        // Проверяем структуру Splide
-        var mainTrack = mainEl.querySelector('.splide__track');
-        var mainList = mainEl.querySelector('.splide__list');
-
-        var thumbTrack = thumbEl.querySelector('.splide__track');
-        var thumbList = thumbEl.querySelector('.splide__list');
-
-        if (!mainTrack || !mainList) {
-            console.error('[awards] У #top-slider отсутствует .splide__track или .splide__list');
-            return;
-        }
-
-        if (!thumbTrack || !thumbList) {
-            console.error('[awards] У #thumbnail-slider отсутствует .splide__track или .splide__list');
-            return;
-        }
-
-        // Если по какой-то причине экземпляры уже существуют,
-        // сначала уничтожаем их
-        if (mainSplide) {
-            mainSplide.destroy();
-            mainSplide = null;
-        }
-
-        if (thumbSplide) {
-            thumbSplide.destroy();
-            thumbSplide = null;
-        }
-
-        // =====================================================
-        // Большой слайдер
-        // =====================================================
-
-        mainSplide = new Splide(mainEl, {
+        mainSplide = new Splide('#top-slider', {
             type: 'fade',
             rewind: true,
             pagination: false,
-            arrows: false,
-            speed: 400
+            arrows: false
         });
 
-        // =====================================================
-        // Миниатюры
-        // =====================================================
-
-        thumbSplide = new Splide(thumbEl, {
+        thumbSplide = new Splide('#thumbnail-slider', {
             fixedWidth: 80,
             fixedHeight: 56,
             gap: 10,
             rewind: true,
             pagination: false,
-            arrows: false,
             isNavigation: true,
             focus: 'center',
-
             breakpoints: {
-                600: {
-                    fixedWidth: 60,
-                    fixedHeight: 44
-                }
+                600: {fixedWidth: 60, fixedHeight: 44}
             }
         });
 
-        // Связываем большой слайдер с миниатюрами
         mainSplide.sync(thumbSplide);
-
         mainSplide.mount();
         thumbSplide.mount();
-
-        // Переходим к нужному патенту
-        if (totalSlides > 0) {
-            mainSplide.go(openAtIndex);
-        }
+        mainSplide.go(openAtIndex);
     });
 
-
-    // =========================================================
-    // Закрытие modal
-    // =========================================================
-
     modalEl.addEventListener('hidden.bs.modal', function () {
-
         if (mainSplide) {
             mainSplide.destroy();
             mainSplide = null;
         }
-
         if (thumbSplide) {
             thumbSplide.destroy();
             thumbSplide = null;
         }
     });
 
-
-    // =========================================================
-    // Клавиатура
-    // =========================================================
-
+    // Клавиши ← → в модалке
     document.addEventListener('keydown', function (e) {
-
-        if (!modalEl.classList.contains('show') || !mainSplide) {
-            return;
-        }
-
+        if (!modalEl.classList.contains('show') || !mainSplide) return;
         if (e.key === 'ArrowLeft') {
             mainSplide.go('<');
             e.preventDefault();
-        }
-
-        if (e.key === 'ArrowRight') {
+        } else if (e.key === 'ArrowRight') {
             mainSplide.go('>');
             e.preventDefault();
         }
     });
-
 })();
