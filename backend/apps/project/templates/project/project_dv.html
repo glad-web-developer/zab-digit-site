@@ -39,7 +39,8 @@
                             <a href="/project/" class="project-breadcrumb-link">все проекты</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="/project/?category={{ project.category }}" class="project-breadcrumb-link">{{project.get_category_display}}</a>
+                            <a href="/project/?category={{ project.category }}"
+                               class="project-breadcrumb-link">{{ project.get_category_display }}</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
                             {{ project.name }}
@@ -184,56 +185,600 @@
 {% endblock %}
 
 {% block extra_js %}
-    <!-- Лёгкий lightbox для галереи -->
+    <!-- Lightbox + zoom для галереи -->
     <script>
         (function () {
             var links = document.querySelectorAll('.project-gallery-link');
             if (!links.length) return;
 
             var overlay = document.createElement('div');
-            overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;'
-                + 'display:none;align-items:center;justify-content:center;flex-direction:column;cursor:pointer;';
+
+            overlay.style.cssText =
+                'position:fixed;' +
+                'inset:0;' +
+                'background:rgba(0,0,0,.9);' +
+                'z-index:9999;' +
+                'display:none;' +
+                'align-items:center;' +
+                'justify-content:center;' +
+                'flex-direction:column;' +
+                'overflow:hidden;' +
+                'touch-action:none;';
+
+            /* =========================
+               IMAGE
+            ========================= */
+
             var img = document.createElement('img');
-            img.style.cssText = 'max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px;';
+
+            img.style.cssText =
+                'max-width:90vw;' +
+                'max-height:82vh;' +
+                'object-fit:contain;' +
+                'border-radius:8px;' +
+                'cursor:zoom-in;' +
+                'transform:translate(0px, 0px) scale(1);' +
+                'transition:transform .15s ease;' +
+                'user-select:none;' +
+                'touch-action:none;';
+
+            img.draggable = false;
+
+            /* =========================
+               CAPTION
+            ========================= */
+
             var cap = document.createElement('p');
-            cap.style.cssText = 'color:#fff;margin-top:12px;font-size:14px;text-align:center;';
+
+            cap.style.cssText =
+                'color:#fff;' +
+                'margin:12px 20px 0;' +
+                'font-size:14px;' +
+                'line-height:1.4;' +
+                'text-align:center;' +
+                'position:relative;' +
+                'z-index:2;';
+
+            /* =========================
+               CLOSE BUTTON
+            ========================= */
+
+            var closeBtn = document.createElement('button');
+
+            closeBtn.innerHTML = '&times;';
+
+            closeBtn.setAttribute('aria-label', 'Закрыть');
+
+            closeBtn.style.cssText =
+                'position:absolute;' +
+                'top:20px;' +
+                'right:25px;' +
+                'z-index:10;' +
+                'width:45px;' +
+                'height:45px;' +
+                'border:0;' +
+                'border-radius:50%;' +
+                'background:rgba(255,255,255,.15);' +
+                'color:#fff;' +
+                'font-size:32px;' +
+                'line-height:40px;' +
+                'cursor:pointer;' +
+                'display:flex;' +
+                'align-items:center;' +
+                'justify-content:center;' +
+                'transition:background .2s;';
+
+            /* =========================
+               ZOOM CONTROLS
+            ========================= */
+
+            var zoomControls = document.createElement('div');
+
+            zoomControls.style.cssText =
+                'position:absolute;' +
+                'bottom:25px;' +
+                'right:25px;' +
+                'z-index:10;' +
+                'display:flex;' +
+                'align-items:center;' +
+                'gap:6px;' +
+                'background:rgba(0,0,0,.55);' +
+                'padding:6px;' +
+                'border-radius:12px;' +
+                'backdrop-filter:blur(5px);';
+
+            /* Кнопка уменьшения */
+
+            var zoomOutBtn = document.createElement('button');
+
+            zoomOutBtn.setAttribute('aria-label', 'Уменьшить');
+
+            zoomOutBtn.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="M8 11h6"></path>
+                <path d="M20 20l-4-4"></path>
+            </svg>
+        `;
+
+            /* Кнопка сброса */
+
+            var zoomResetBtn = document.createElement('button');
+
+            zoomResetBtn.setAttribute('aria-label', 'Сбросить масштаб');
+
+            zoomResetBtn.textContent = '100%';
+
+            /* Кнопка увеличения */
+
+            var zoomInBtn = document.createElement('button');
+
+            zoomInBtn.setAttribute('aria-label', 'Увеличить');
+
+            zoomInBtn.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="M11 8v6"></path>
+                <path d="M8 11h6"></path>
+                <path d="M20 20l-4-4"></path>
+            </svg>
+        `;
+
+            var zoomButtons = [
+                zoomOutBtn,
+                zoomResetBtn,
+                zoomInBtn
+            ];
+
+            zoomButtons.forEach(function (btn) {
+
+                btn.style.cssText =
+                    'height:38px;' +
+                    'min-width:42px;' +
+                    'padding:0 8px;' +
+                    'border:0;' +
+                    'border-radius:8px;' +
+                    'background:rgba(255,255,255,.15);' +
+                    'color:#fff;' +
+                    'font-size:13px;' +
+                    'cursor:pointer;' +
+                    'display:flex;' +
+                    'align-items:center;' +
+                    'justify-content:center;' +
+                    'transition:background .2s, transform .1s;';
+
+                btn.addEventListener('mouseenter', function () {
+                    btn.style.background = 'rgba(255,255,255,.3)';
+                });
+
+                btn.addEventListener('mouseleave', function () {
+                    btn.style.background = 'rgba(255,255,255,.15)';
+                });
+
+                btn.addEventListener('mousedown', function () {
+                    btn.style.transform = 'scale(.94)';
+                });
+
+                btn.addEventListener('mouseup', function () {
+                    btn.style.transform = 'scale(1)';
+                });
+            });
+
+            zoomControls.appendChild(zoomOutBtn);
+            zoomControls.appendChild(zoomResetBtn);
+            zoomControls.appendChild(zoomInBtn);
+
+            /* =========================
+               HINT
+            ========================= */
+
+            var hint = document.createElement('div');
+
+            hint.textContent =
+                'Колесо мыши — zoom · Двойной клик — zoom · Esc — закрыть';
+
+            hint.style.cssText =
+                'position:absolute;' +
+                'bottom:20px;' +
+                'left:50%;' +
+                'transform:translateX(-50%);' +
+                'color:rgba(255,255,255,.55);' +
+                'font-size:12px;' +
+                'text-align:center;' +
+                'pointer-events:none;';
+
+            /* =========================
+               ADD ELEMENTS
+            ========================= */
+
             overlay.appendChild(img);
             overlay.appendChild(cap);
+            overlay.appendChild(closeBtn);
+            overlay.appendChild(zoomControls);
+            overlay.appendChild(hint);
+
             document.body.appendChild(overlay);
 
+            /* =========================
+               VARIABLES
+            ========================= */
+
             var items = Array.from(links);
+
             var cur = 0;
 
+            var scale = 1;
+
+            var minScale = 1;
+            var maxScale = 4;
+
+            var posX = 0;
+            var posY = 0;
+
+            var isDragging = false;
+
+            var startX = 0;
+            var startY = 0;
+
+            /* =========================
+               TRANSFORM
+            ========================= */
+
+            function updateTransform(animate) {
+
+                img.style.transition = animate
+                    ? 'transform .15s ease'
+                    : 'none';
+
+                img.style.transform =
+                    'translate(' +
+                    posX +
+                    'px, ' +
+                    posY +
+                    'px) scale(' +
+                    scale +
+                    ')';
+
+                img.style.cursor =
+                    scale > 1
+                        ? 'grab'
+                        : 'zoom-in';
+            }
+
+            /* =========================
+               RESET ZOOM
+            ========================= */
+
+            function resetZoom() {
+
+                scale = 1;
+
+                posX = 0;
+                posY = 0;
+
+                updateTransform(true);
+
+                zoomResetBtn.textContent = '100%';
+            }
+
+            /* =========================
+               ZOOM IN
+            ========================= */
+
+            function zoomIn() {
+
+                scale = Math.min(
+                    maxScale,
+                    scale + 0.5
+                );
+
+                updateTransform(true);
+
+                zoomResetBtn.textContent =
+                    Math.round(scale * 100) + '%';
+            }
+
+            /* =========================
+               ZOOM OUT
+            ========================= */
+
+            function zoomOut() {
+
+                scale = Math.max(
+                    minScale,
+                    scale - 0.5
+                );
+
+                if (scale === 1) {
+
+                    posX = 0;
+                    posY = 0;
+                }
+
+                updateTransform(true);
+
+                zoomResetBtn.textContent =
+                    Math.round(scale * 100) + '%';
+            }
+
+            /* =========================
+               OPEN
+            ========================= */
+
             function open(idx) {
+
                 cur = idx;
+
                 img.src = items[cur].href;
-                cap.textContent = items[cur].dataset.caption || '';
+
+                cap.textContent =
+                    items[cur].dataset.caption || '';
+
+                resetZoom();
+
                 overlay.style.display = 'flex';
+
                 document.body.style.overflow = 'hidden';
             }
 
+            /* =========================
+               CLOSE
+            ========================= */
+
             function close() {
+
                 overlay.style.display = 'none';
+
                 document.body.style.overflow = '';
+
+                resetZoom();
             }
 
+            /* =========================
+               NEXT / PREVIOUS
+            ========================= */
+
+            function next() {
+
+                open(
+                    (cur + 1) % items.length
+                );
+            }
+
+            function prev() {
+
+                open(
+                    (cur - 1 + items.length) %
+                    items.length
+                );
+            }
+
+            /* =========================
+               GALLERY LINKS
+            ========================= */
+
             items.forEach(function (a, i) {
+
                 a.addEventListener('click', function (e) {
+
                     e.preventDefault();
+
                     open(i);
                 });
             });
 
-            overlay.addEventListener('click', function (e) {
-                if (e.target === overlay || e.target === img) close();
+            /* =========================
+               CLOSE BUTTON
+            ========================= */
+
+            closeBtn.addEventListener('click', function (e) {
+
+                e.stopPropagation();
+
+                close();
             });
 
-            document.addEventListener('keydown', function (e) {
-                if (overlay.style.display === 'none') return;
-                if (e.key === 'Escape') close();
-                if (e.key === 'ArrowRight') open((cur + 1) % items.length);
-                if (e.key === 'ArrowLeft') open((cur - 1 + items.length) % items.length);
+            /* =========================
+               CLICK BACKGROUND
+            ========================= */
+
+            overlay.addEventListener('click', function (e) {
+
+                if (e.target === overlay) {
+
+                    close();
+                }
             });
+
+            /* =========================
+               ZOOM BUTTONS
+            ========================= */
+
+            zoomOutBtn.addEventListener('click', function (e) {
+
+                e.stopPropagation();
+
+                zoomOut();
+            });
+
+            zoomResetBtn.addEventListener('click', function (e) {
+
+                e.stopPropagation();
+
+                resetZoom();
+            });
+
+            zoomInBtn.addEventListener('click', function (e) {
+
+                e.stopPropagation();
+
+                zoomIn();
+            });
+
+            /* =========================
+               DOUBLE CLICK
+            ========================= */
+
+            img.addEventListener('dblclick', function (e) {
+
+                e.preventDefault();
+
+                if (scale === 1) {
+
+                    scale = 2;
+
+                    updateTransform(true);
+
+                    zoomResetBtn.textContent = '200%';
+
+                } else {
+
+                    resetZoom();
+                }
+            });
+
+            /* =========================
+               MOUSE WHEEL ZOOM
+            ========================= */
+
+            img.addEventListener('wheel', function (e) {
+
+                e.preventDefault();
+
+                if (e.deltaY < 0) {
+
+                    zoomIn();
+
+                } else {
+
+                    zoomOut();
+                }
+
+            }, {
+                passive: false
+            });
+
+            /* =========================
+               DRAG
+            ========================= */
+
+            img.addEventListener('mousedown', function (e) {
+
+                if (scale <= 1) return;
+
+                e.preventDefault();
+
+                isDragging = true;
+
+                startX =
+                    e.clientX - posX;
+
+                startY =
+                    e.clientY - posY;
+
+                img.style.cursor = 'grabbing';
+
+                img.style.transition = 'none';
+            });
+
+            document.addEventListener('mousemove', function (e) {
+
+                if (!isDragging) return;
+
+                posX =
+                    e.clientX - startX;
+
+                posY =
+                    e.clientY - startY;
+
+                updateTransform(false);
+            });
+
+            document.addEventListener('mouseup', function () {
+
+                if (!isDragging) return;
+
+                isDragging = false;
+
+                img.style.cursor =
+                    scale > 1
+                        ? 'grab'
+                        : 'zoom-in';
+            });
+
+            /* =========================
+               KEYBOARD
+            ========================= */
+
+            document.addEventListener('keydown', function (e) {
+
+                if (overlay.style.display === 'none') {
+                    return;
+                }
+
+                if (e.key === 'Escape') {
+
+                    close();
+
+                    return;
+                }
+
+                if (e.key === 'ArrowRight') {
+
+                    next();
+
+                    return;
+                }
+
+                if (e.key === 'ArrowLeft') {
+
+                    prev();
+
+                    return;
+                }
+
+                if (
+                    e.key === '+' ||
+                    e.key === '='
+                ) {
+
+                    zoomIn();
+
+                    return;
+                }
+
+                if (e.key === '-') {
+
+                    zoomOut();
+
+                    return;
+                }
+
+                if (e.key === '0') {
+
+                    resetZoom();
+                }
+            });
+
+            /* =========================
+               PREVENT IMAGE DRAG
+            ========================= */
+
+            img.addEventListener('dragstart', function (e) {
+
+                e.preventDefault();
+            });
+
         })();
     </script>
 {% endblock %}

@@ -55,7 +55,7 @@ body {
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
-    background-attachment: scroll;
+    background-attachment: fixed;
 }
 
 /* Заголовки — шрифт Strong */
@@ -986,7 +986,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ====== Лого в футере — белое+красное ====== */
 .footer-logo-img {
-    max-width: 100px;
+    max-width: 120px;
     height: auto;
 }
 
@@ -2048,4 +2048,30 @@ textarea.contact-form-input {
         width: 100%;
         padding: 10px 15px;
     }
+}
+
+@media (max-width: 576px) {
+    .project-lightbox-zoom {
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+.project-card-link {
+    display: block;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-card-link:hover {
+    color: inherit;
+}
+
+.project-card {
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.project-card-link:hover .project-card {
+    transform: translateY(-3px);
 }
