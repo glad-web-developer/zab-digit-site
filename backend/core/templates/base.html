@@ -59,27 +59,27 @@
                 data-bs-dismiss="offcanvas" aria-label="Закрыть меню"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-        <nav class="menu-list flex-grow-1">
-            <a href="/#о-компании" class="menu-list-link {% if active_page == 'home' %}menu-list-link-active{% endif %}"
-               data-bs-dismiss="offcanvas">о компании</a>
-            <a href="/project/" class="menu-list-link {% if active_page == 'project' %}menu-list-link-active{% endif %}"
-               data-bs-dismiss="offcanvas">кейсы</a>
-            <a href="/#отзывы" class="menu-list-link" data-bs-dismiss="offcanvas">отзывы</a>
-            <a href="/#о-продукте" class="menu-list-link" data-bs-dismiss="offcanvas">о продукте</a>
-            <a href="/#преимущества" class="menu-list-link" data-bs-dismiss="offcanvas">преимущества</a>
-            <a href="/#награды" class="menu-list-link" data-bs-dismiss="offcanvas">награды</a>
-            <a href="tel:{{ site_settings.phone }}" class="menu-list-link phone-copy"
-               data-phone="{{ site_settings.phone }}" data-bs-dismiss="offcanvas">{{ site_settings.phone }}</a>
-            <a href="{{ site_settings.telegram_url }}" class="menu-list-link menu-list-link-icon" aria-label="Telegram"
-               data-bs-dismiss="offcanvas" target="_blank" rel="noopener">
-                <img src="{% static 'images/menu-icon.svg' %}" alt="Telegram" width="35" height="35">
-            </a>
-        </nav>
-        <div class="menu-overlay-footer mt-auto">
+        <div class="menu-overlay-footer mb-5">
             <img class="menu-overlay-logo" src="{% static 'images/logo_mob_menu.svg' %}" alt="" width="163"
                  height="153">
             <span class="menu-overlay-text">автоматизируем<br>и масштабируем</span>
         </div>
+        <nav class="menu-list flex-grow-1">
+            <a href="/#о-компании" class="menu-list-link {% if active_page == 'home' %}menu-list-link-active{% endif %}"
+               data-bs-dismiss="offcanvas">о компании</a>
+            <a href="/project/" class="menu-list-link {% if active_page == 'project' %}menu-list-link-active{% endif %}">кейсы</a>
+            <a href="/#отзывы" class="menu-list-link">отзывы</a>
+            <a href="/#о-продукте" class="menu-list-link">о продукте</a>
+            <a href="/#преимущества" class="menu-list-link">преимущества</a>
+            <a href="/#награды" class="menu-list-link">награды</a>
+            <a href="tel:{{ site_settings.phone }}" class="menu-list-link phone-copy"
+               data-phone="{{ site_settings.phone }}">{{ site_settings.phone }}</a>
+            <a href="{{ site_settings.telegram_url }}" class="menu-list-link menu-list-link-icon" aria-label="Telegram"
+               target="_blank">
+                <img src="{% static 'images/menu-icon.svg' %}" alt="Telegram" width="35" height="35">
+            </a>
+        </nav>
+
     </div>
 </div>
 
@@ -290,124 +290,124 @@
 
 {#скролл с учетом шапки#}
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const header = document.querySelector('.header');
+    document.addEventListener('DOMContentLoaded', function () {
+        const header = document.querySelector('.header');
 
-    // Все ссылки с якорями
-    const links = document.querySelectorAll(
-        '.menu-link[href*="#"], .menu-list-link[href*="#"]'
-    );
+        // Все ссылки с якорями
+        const links = document.querySelectorAll(
+            '.menu-link[href*="#"], .menu-list-link[href*="#"]'
+        );
 
-    if (!links.length) return;
+        if (!links.length) return;
 
-    function getId(link) {
-        const url = new URL(link.href, window.location.origin);
+        function getId(link) {
+            const url = new URL(link.href, window.location.origin);
 
-        if (url.pathname !== window.location.pathname || !url.hash) {
-            return null;
-        }
-
-        return decodeURIComponent(url.hash.substring(1));
-    }
-
-    function updateActiveLink() {
-        const headerHeight = header
-            ? header.getBoundingClientRect().height + 100
-            : 0;
-
-        let activeId = null;
-        let closestTop = -Infinity;
-
-        links.forEach(link => {
-            const id = getId(link);
-            if (!id) return;
-
-            const section = document.getElementById(id);
-            if (!section) return;
-
-            const top = section.getBoundingClientRect().top;
-
-            // Блок уже дошёл до шапки
-            if (top <= headerHeight && top > closestTop) {
-                closestTop = top;
-                activeId = id;
-            }
-        });
-
-        // Убираем подсветку у всех
-        links.forEach(link => {
-            link.classList.remove(
-                'menu-link-active',
-                'menu-list-link-active'
-            );
-        });
-
-        // Подсвечиваем нужную
-        if (activeId) {
-            links.forEach(link => {
-                if (getId(link) === activeId) {
-                    if (link.classList.contains('menu-link')) {
-                        link.classList.add('menu-link-active');
-                    }
-
-                    if (link.classList.contains('menu-list-link')) {
-                        link.classList.add('menu-list-link-active');
-                    }
-                }
-            });
-        }
-    }
-
-    // Переход по якорю с учётом шапки
-    links.forEach(link => {
-        link.addEventListener('click', function (e) {
-            const url = new URL(this.href, window.location.origin);
-
-            if (
-                url.pathname !== window.location.pathname ||
-                !url.hash
-            ) {
-                return;
+            if (url.pathname !== window.location.pathname || !url.hash) {
+                return null;
             }
 
-            const target = document.getElementById(
-                decodeURIComponent(url.hash.substring(1))
-            );
+            return decodeURIComponent(url.hash.substring(1));
+        }
 
-            if (!target) return;
-
-            e.preventDefault();
-
+        function updateActiveLink() {
             const headerHeight = header
-                ? header.getBoundingClientRect().height
+                ? header.getBoundingClientRect().height + 100
                 : 0;
 
-            const targetPosition =
-                target.getBoundingClientRect().top +
-                window.scrollY -
-                headerHeight - 80;
+            let activeId = null;
+            let closestTop = -Infinity;
 
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
+            links.forEach(link => {
+                const id = getId(link);
+                if (!id) return;
+
+                const section = document.getElementById(id);
+                if (!section) return;
+
+                const top = section.getBoundingClientRect().top;
+
+                // Блок уже дошёл до шапки
+                if (top <= headerHeight && top > closestTop) {
+                    closestTop = top;
+                    activeId = id;
+                }
             });
 
-            history.pushState(null, '', url.hash);
+            // Убираем подсветку у всех
+            links.forEach(link => {
+                link.classList.remove(
+                    'menu-link-active',
+                    'menu-list-link-active'
+                );
+            });
 
-            setTimeout(updateActiveLink, 300);
+            // Подсвечиваем нужную
+            if (activeId) {
+                links.forEach(link => {
+                    if (getId(link) === activeId) {
+                        if (link.classList.contains('menu-link')) {
+                            link.classList.add('menu-link-active');
+                        }
+
+                        if (link.classList.contains('menu-list-link')) {
+                            link.classList.add('menu-list-link-active');
+                        }
+                    }
+                });
+            }
+        }
+
+        // Переход по якорю с учётом шапки
+        links.forEach(link => {
+            link.addEventListener('click', function (e) {
+                const url = new URL(this.href, window.location.origin);
+
+                if (
+                    url.pathname !== window.location.pathname ||
+                    !url.hash
+                ) {
+                    return;
+                }
+
+                const target = document.getElementById(
+                    decodeURIComponent(url.hash.substring(1))
+                );
+
+                if (!target) return;
+
+                e.preventDefault();
+
+                const headerHeight = header
+                    ? header.getBoundingClientRect().height
+                    : 0;
+
+                const targetPosition =
+                    target.getBoundingClientRect().top +
+                    window.scrollY -
+                    headerHeight - 80;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+
+                history.pushState(null, '', url.hash);
+
+                setTimeout(updateActiveLink, 300);
+            });
         });
+
+        // Подсветка при скролле
+        window.addEventListener('scroll', updateActiveLink, {
+            passive: true
+        });
+
+        window.addEventListener('resize', updateActiveLink);
+
+        // При загрузке страницы
+        updateActiveLink();
     });
-
-    // Подсветка при скролле
-    window.addEventListener('scroll', updateActiveLink, {
-        passive: true
-    });
-
-    window.addEventListener('resize', updateActiveLink);
-
-    // При загрузке страницы
-    updateActiveLink();
-});
 </script>
 </body>
 </html>

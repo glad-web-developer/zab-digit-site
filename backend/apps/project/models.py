@@ -6,6 +6,8 @@ CATEGORY_CHOICES = [
     ('erp', 'ERP/CRM с нуля'),
     ('app', 'Приложения'),
     ('site', 'Сайты'),
+    ('ai', 'AI'),
+    ('bot', 'Боты'),
 ]
 
 VIEW_CHOICES = [
@@ -14,6 +16,18 @@ VIEW_CHOICES = [
     ('small', 'Фото на пол экрана'),
 ]
 
+class ProjectCategory(models.Model):
+    class Meta:
+        verbose_name = 'Категория проекта'
+        verbose_name_plural = 'Категории проектов'
+        ordering = ['order_index', 'name']
+
+    name = models.CharField('Название', max_length=100)
+    slug = models.SlugField('Код', max_length=20, unique=True)
+    order_index = models.IntegerField('Порядок', default=0)
+
+    def __str__(self):
+        return self.name
 
 class Project(models.Model):
     class Meta:
@@ -28,8 +42,12 @@ class Project(models.Model):
     description_problem = RichTextField('Описание для блока Решение проблем', null=True, blank=True)
     thumbnail = models.ImageField('Превью-изображение', upload_to='project/thumbnails/',
                                   null=True, blank=True)
-    category = models.CharField('Категория', max_length=20, choices=CATEGORY_CHOICES,
-                                null=True, blank=True)
+    categories = models.ManyToManyField(
+        ProjectCategory,
+        verbose_name='Категории',
+        related_name='projects',
+        blank=True,
+    )
     show_in_main = models.BooleanField('Показывать на главной странице', default=False)
     order_index = models.IntegerField('Индекс сортировки', default=0)
 

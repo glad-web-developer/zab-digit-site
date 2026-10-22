@@ -26,10 +26,10 @@
                     Все проекты
                 </a>
 
-                {% for value, label in categories %}
-                    <a href="/project/?category={{ value }}"
-                       class="project-filter-btn {% if active_category == value %}project-filter-btn-active{% endif %}">
-                        {{ label }}
+                {% for category in categories %}
+                    <a href="/project/?category={{ category.slug }}"
+                       class="project-filter-btn {% if active_category == category.slug %}project-filter-btn-active{% endif %}">
+                        {{ category.name }}
                     </a>
                 {% endfor %}
             </div>
