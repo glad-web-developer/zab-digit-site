@@ -2,8 +2,14 @@ from django.contrib import admin
 from django.utils.html import format_html
 from import_export.admin import ImportExportModelAdmin
 
-from .models import Project, ProjectImage
+from .models import Project, ProjectImage, ProjectCategory
 
+
+@admin.register(ProjectCategory)
+class ProjectCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug', 'order_index')
+    list_editable = ('order_index',)
+    prepopulated_fields = {'slug': ('name',)}
 
 class ProjectImageInline(admin.TabularInline):
     model = ProjectImage
@@ -23,10 +29,11 @@ class ProjectImageInline(admin.TabularInline):
 
 @admin.register(Project)
 class ProjectAdmin(ImportExportModelAdmin):
-    list_display = ['id', 'name', 'category', 'order_index', 'show_in_main', 'thumbnail_preview']
+    list_display = ['id', 'name', 'order_index', 'show_in_main', 'thumbnail_preview']
     list_display_links = ['id', 'name']
-    list_filter = ['show_in_main', 'category']
+    list_filter = ['show_in_main', 'categories']
     list_editable = ['order_index', 'show_in_main']
+    filter_horizontal = ('categories',)
     search_fields = ['name']
     prepopulated_fields = {'slug': ('name',)}
     save_on_top = True
@@ -35,7 +42,7 @@ class ProjectAdmin(ImportExportModelAdmin):
 
     fieldsets = (
         ('Основное', {
-            'fields': ('name', 'slug', 'category', 'thumbnail', 'show_in_main', 'order_index')
+            'fields': ('name', 'slug', 'categories', 'thumbnail', 'show_in_main', 'order_index')
         }),
         ('Описание', {
             'fields': ('description',),
